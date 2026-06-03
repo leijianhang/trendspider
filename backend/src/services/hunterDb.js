@@ -1,4 +1,5 @@
 import mysql from 'mysql2/promise';
+import { getDatabasePassword } from '../config/databasePasswords.js';
 
 let pool;
 
@@ -7,7 +8,7 @@ export const getHunterDbConfig = () => ({
   port: Number(process.env.HUNTER_DB_PORT || 3306),
   database: process.env.HUNTER_DB_NAME || 'hunter_db',
   user: process.env.HUNTER_DB_USER || 'hunter',
-  password: process.env.HUNTER_DB_PASSWORD,
+  password: getDatabasePassword('hunterDb'),
   waitForConnections: true,
   connectionLimit: Number(process.env.HUNTER_DB_CONNECTION_LIMIT || 5),
   connectTimeout: Number(process.env.HUNTER_DB_CONNECT_TIMEOUT_MS || 3000),
@@ -18,10 +19,6 @@ export const getHunterDbPool = () => {
   if (pool) return pool;
 
   const config = getHunterDbConfig();
-  if (!config.password) {
-    throw new Error('HUNTER_DB_PASSWORD is not configured');
-  }
-
   pool = mysql.createPool(config);
   return pool;
 };

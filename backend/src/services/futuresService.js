@@ -1,5 +1,6 @@
 import NodeCache from 'node-cache';
 import axios from 'axios';
+import { getDatabasePassword } from '../config/databasePasswords.js';
 import { fetchHunterFuturesList } from './hunterFuturesService.js';
 
 const cache = new NodeCache({ stdTTL: 300 });
@@ -66,8 +67,7 @@ const normalizeLimit = (value, fallback) =>
 
 const getTaosAuthHeader = () => {
   const user = process.env.APOLLO_TAOS_USER || 'apollo';
-  const password = process.env.APOLLO_TAOS_PASSWORD;
-  if (!password) throw new Error('APOLLO_TAOS_PASSWORD is not configured');
+  const password = getDatabasePassword('apolloTaos');
   return `Basic ${Buffer.from(`${user}:${password}`).toString('base64')}`;
 };
 

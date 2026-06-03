@@ -1,5 +1,6 @@
 import axios from 'axios';
 import NodeCache from 'node-cache';
+import { getDatabasePassword } from '../config/databasePasswords.js';
 import { fetchHunterStockList } from './hunterStockService.js';
 
 const cache = new NodeCache({ stdTTL: 300 });
@@ -54,8 +55,7 @@ const normalizeLimit = (value, fallback) =>
 
 const getTaosAuthHeader = () => {
   const user = process.env.HUNTER_TAOS_USER || 'hunter';
-  const password = process.env.HUNTER_TAOS_PASSWORD;
-  if (!password) throw new Error('HUNTER_TAOS_PASSWORD is not configured');
+  const password = getDatabasePassword('hunterTaos');
   return `Basic ${Buffer.from(`${user}:${password}`).toString('base64')}`;
 };
 
