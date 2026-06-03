@@ -4,9 +4,10 @@ import authRoutes from './routes/auth.js';
 import stockRoutes from './routes/stock.js';
 import futuresRoutes from './routes/futures.js';
 import patternRoutes from './routes/pattern.js';
+import { getBackendConfig } from './config/backendConfig.js';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = getBackendConfig().port || 3001;
 
 app.use(express.json());
 

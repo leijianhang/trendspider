@@ -16,3 +16,4 @@ test-results/
 .superpowers/
 output/
 backend/config/database-passwords.json
+backend/config/backend-config.json

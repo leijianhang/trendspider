@@ -1,10 +1,9 @@
 import NodeCache from 'node-cache';
 import axios from 'axios';
-import { getDatabasePassword } from '../config/databasePasswords.js';
+import { getBackendConfigSection } from '../config/backendConfig.js';
 import { fetchHunterFuturesList } from './hunterFuturesService.js';
 
 const cache = new NodeCache({ stdTTL: 300 });
-const HUNTER_QUERY_TIMEOUT_MS = Number(process.env.HUNTER_DB_QUERY_TIMEOUT_MS || 3500);
 const FUTURES_PERIOD_TABLES = {
   '1min': 'future_1min',
   '5min': 'future_1min',
@@ -27,9 +26,10 @@ const FUTURES_PERIOD_LIMITS = {
 };
 
 const fetchHunterFuturesListWithTimeout = options => {
+  const { queryTimeoutMs = 3500 } = getBackendConfigSection('hunterDb');
   let timeoutId;
   const timeout = new Promise((_, reject) => {
-    timeoutId = setTimeout(() => reject(new Error('Hunter MySQL query timed out')), HUNTER_QUERY_TIMEOUT_MS);
+    timeoutId = setTimeout(() => reject(new Error('Hunter MySQL query timed out')), Number(queryTimeoutMs));
   });
 
   return Promise.race([fetchHunterFuturesList(options), timeout])
@@ -66,14 +66,14 @@ const normalizeLimit = (value, fallback) =>
   Math.min(Math.max(Number(value) || fallback, 1), 5000);
 
 const getTaosAuthHeader = () => {
-  const user = process.env.APOLLO_TAOS_USER || 'apollo';
-  const password = getDatabasePassword('apolloTaos');
+  const { user, password } = getBackendConfigSection('apolloTaos');
   return `Basic ${Buffer.from(`${user}:${password}`).toString('base64')}`;
 };
 
 const queryTaos = async sql => {
-  const response = await axios.post(process.env.APOLLO_TAOS_REST_URL || 'http://192.168.1.48:6041/rest/sql', sql, {
-    timeout: Number(process.env.APOLLO_TAOS_TIMEOUT_MS || 6000),
+  const { restUrl, timeoutMs = 6000 } = getBackendConfigSection('apolloTaos');
+  const response = await axios.post(restUrl, sql, {
+    timeout: Number(timeoutMs),
     headers: {
       Authorization: getTaosAuthHeader(),
       'Content-Type': 'text/plain'
@@ -189,7 +189,7 @@ const appendChangeFields = rows => rows.map((row, index) => {
 const fetchFuturesDataFromTaos = async (symbol, period, { limit: requestedLimit, before } = {}) => {
   const table = FUTURES_PERIOD_TABLES[period] || FUTURES_PERIOD_TABLES.daily;
   const limit = normalizeLimit(requestedLimit, FUTURES_PERIOD_LIMITS[period] || FUTURES_PERIOD_LIMITS.daily);
-  const database = process.env.APOLLO_TAOS_DATABASE || 'apollo_db';
+  const { database } = getBackendConfigSection('apolloTaos');
   const normalizedSymbol = normalizeSymbol(symbol);
   if (!normalizedSymbol) return [];
 

@@ -1,11 +1,10 @@
 import axios from 'axios';
 import NodeCache from 'node-cache';
-import { getDatabasePassword } from '../config/databasePasswords.js';
+import { getBackendConfigSection } from '../config/backendConfig.js';
 import { fetchHunterStockList } from './hunterStockService.js';
 
 const cache = new NodeCache({ stdTTL: 300 });
 
-const HUNTER_QUERY_TIMEOUT_MS = Number(process.env.HUNTER_DB_QUERY_TIMEOUT_MS || 3500);
 const STOCK_PERIOD_TABLES = {
   '1min': 'stock_1min',
   '5min': 'stock_1min',
@@ -28,9 +27,10 @@ const STOCK_PERIOD_LIMITS = {
 };
 
 const fetchHunterStockListWithTimeout = options => {
+  const { queryTimeoutMs = 3500 } = getBackendConfigSection('hunterDb');
   let timeoutId;
   const timeout = new Promise((_, reject) => {
-    timeoutId = setTimeout(() => reject(new Error('Hunter MySQL query timed out')), HUNTER_QUERY_TIMEOUT_MS);
+    timeoutId = setTimeout(() => reject(new Error('Hunter MySQL query timed out')), Number(queryTimeoutMs));
   });
 
   return Promise.race([fetchHunterStockList(options), timeout])
@@ -54,14 +54,14 @@ const normalizeLimit = (value, fallback) =>
   Math.min(Math.max(Number(value) || fallback, 1), 5000);
 
 const getTaosAuthHeader = () => {
-  const user = process.env.HUNTER_TAOS_USER || 'hunter';
-  const password = getDatabasePassword('hunterTaos');
+  const { user, password } = getBackendConfigSection('hunterTaos');
   return `Basic ${Buffer.from(`${user}:${password}`).toString('base64')}`;
 };
 
 const queryTaos = async sql => {
-  const response = await axios.post(process.env.HUNTER_TAOS_REST_URL || 'http://192.168.1.48:6041/rest/sql', sql, {
-    timeout: Number(process.env.HUNTER_TAOS_TIMEOUT_MS || 6000),
+  const { restUrl, timeoutMs = 6000 } = getBackendConfigSection('hunterTaos');
+  const response = await axios.post(restUrl, sql, {
+    timeout: Number(timeoutMs),
     headers: {
       Authorization: getTaosAuthHeader(),
       'Content-Type': 'text/plain'
@@ -177,7 +177,7 @@ const appendChangeFields = rows => rows.map((row, index) => {
 const fetchStockDataFromTaos = async (symbol, period, { limit: requestedLimit, before } = {}) => {
   const table = STOCK_PERIOD_TABLES[period] || STOCK_PERIOD_TABLES.daily;
   const limit = normalizeLimit(requestedLimit, STOCK_PERIOD_LIMITS[period] || STOCK_PERIOD_LIMITS.daily);
-  const database = process.env.HUNTER_TAOS_DATABASE || 'hunter_db';
+  const { database } = getBackendConfigSection('hunterTaos');
   const normalizedSymbol = normalizeStockTsCode(symbol);
   if (!normalizedSymbol) return [];
 
