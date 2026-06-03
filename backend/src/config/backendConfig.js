@@ -8,8 +8,6 @@ const BACKEND_CONFIG_PATH = path.resolve(__dirname, '../../config/backend-config
 
 const normalizeEnvironment = value => {
   const env = String(value || 'dev').trim().toLowerCase();
-  if (env === 'production') return 'prod';
-  if (env === 'development') return 'dev';
   return env || 'dev';
 };
 
