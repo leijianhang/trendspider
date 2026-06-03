@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+*.log
+*.pid
+.env
+.env.local
+dist/
+build/
+coverage/
+test-results/
+.vscode/
+.idea/
+.claude/
+.codegraph/
+.playwright-cli/
+.superpowers/
+output/

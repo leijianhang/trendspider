@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0e27;
+  color: #ffffff;
+}
+
+body.theme-day {
+  background-color: #f4f6f8;
+  color: #1f2933;
+}
+
+body.theme-night {
+  background-color: #080b0f;
+  color: #eef4f8;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1e3a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3348;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d4358;
+}
+
+body.theme-day ::-webkit-scrollbar-track {
+  background: #eef2f6;
+}
+
+body.theme-day ::-webkit-scrollbar-thumb {
+  background: #bcc8d3;
+}
+
+body.theme-day ::-webkit-scrollbar-thumb:hover {
+  background: #97a8b8;
+}
+
+body.theme-day,
+body.theme-day * {
+  scrollbar-color: #bcc8d3 #eef2f6;
+}
+
+body.theme-day *::-webkit-scrollbar-track {
+  background: #eef2f6;
+}
+
+body.theme-day *::-webkit-scrollbar-thumb {
+  border: 2px solid #eef2f6;
+  background: #bcc8d3;
+}
+
+body.theme-day *::-webkit-scrollbar-thumb:hover {
+  background: #97a8b8;
+}

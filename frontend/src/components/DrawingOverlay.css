@@ -1,0 +1,453 @@
+.drawing-overlay {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.drawing-overlay.selection-mode {
+  pointer-events: none;
+}
+
+.drawing-overlay.drawing-mode {
+  cursor: crosshair;
+  pointer-events: auto;
+}
+
+.drawing-shape,
+.drawing-text {
+  pointer-events: auto;
+  cursor: pointer;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-shape {
+  fill: none;
+}
+
+.drawing-shape.selected,
+.drawing-text.selected {
+  filter: drop-shadow(0 0 5px rgba(78, 224, 147, .55));
+}
+
+.drawing-hit-line {
+  stroke: transparent;
+  stroke-width: 14;
+  fill: none;
+  cursor: move;
+  pointer-events: stroke;
+}
+
+.drawing-hit-rect {
+  fill: transparent;
+  stroke: transparent;
+  cursor: move;
+  pointer-events: all;
+}
+
+.drawing-hit-ellipse {
+  fill: transparent;
+  stroke: transparent;
+  cursor: move;
+  pointer-events: all;
+}
+
+.drawing-anchor-handle {
+  fill: #080b0f;
+  stroke: #d9fff0;
+  stroke-width: 1.6;
+  cursor: grab;
+  pointer-events: auto;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-anchor-handle:hover {
+  fill: #4ee093;
+  stroke: #080b0f;
+}
+
+.drawing-label {
+  fill: #d9fff0;
+  paint-order: stroke;
+  stroke: rgba(8, 11, 15, .88);
+  stroke-width: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.fibonacci-label {
+  font-size: 10px;
+}
+
+.fibonacci-level {
+  opacity: .86;
+}
+
+.drawing-fib-guide {
+  stroke: rgba(217, 255, 240, .36);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-fib-fill {
+  opacity: .14;
+  pointer-events: none;
+}
+
+.drawing-channel-fill {
+  opacity: .1;
+  pointer-events: none;
+}
+
+.drawing-channel-median {
+  opacity: .56;
+  stroke-dasharray: 4 5;
+}
+
+.drawing-range-cap {
+  stroke: #d9fff0;
+  stroke-width: 1.5;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.range-label {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.custom-drawing-label {
+  font-size: 10px;
+}
+
+.drawing-alert-marker {
+  pointer-events: none;
+}
+
+.drawing-alert-marker circle {
+  fill: #101820;
+  stroke: #ffb84d;
+  stroke-width: 1.4;
+}
+
+.drawing-alert-marker path {
+  fill: none;
+  stroke: #ffd08a;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.drawing-text {
+  paint-order: stroke;
+  stroke: rgba(8, 11, 15, .85);
+  stroke-width: 3px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.drawing-callout {
+  cursor: move;
+  pointer-events: auto;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-callout.selected {
+  filter: drop-shadow(0 0 5px rgba(78, 224, 147, .55));
+}
+
+.drawing-draft-line {
+  stroke: #4ee093;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-draft-rect {
+  fill: rgba(78, 224, 147, .08);
+  stroke: #4ee093;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing-context-menu-container {
+  pointer-events: auto;
+}
+
+.drawing-context-menu {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  border: 1px solid #2f4050;
+  border-radius: 4px;
+  background: #101820;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .34);
+  overflow: hidden;
+}
+
+.drawing-context-menu::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.drawing-context-menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 30px;
+  padding: 0 10px;
+  border-bottom: 1px solid #20303e;
+  color: #d1d8df;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.drawing-context-back {
+  color: #8d9aa7 !important;
+}
+
+.drawing-context-menu-title b {
+  color: #ffb84d;
+  font-size: 10px;
+}
+
+.drawing-context-section {
+  display: grid;
+  gap: 4px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #20303e;
+}
+
+.drawing-context-section.swatches {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.drawing-context-section.swatches button {
+  width: 18px;
+  height: 18px;
+  min-height: 18px;
+  padding: 0;
+  border: 1px solid #2f4050;
+  border-radius: 50%;
+  background: var(--swatch-color);
+}
+
+.drawing-context-section.width-options {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.drawing-context-section.width-options button {
+  display: grid;
+  place-items: center;
+  height: 22px;
+  min-height: 22px;
+  padding: 0;
+}
+
+.drawing-context-section.width-options span {
+  width: 22px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.drawing-property-row {
+  display: grid;
+  gap: 5px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #20303e;
+  color: #8d9aa7;
+  font-size: 11px;
+}
+
+.drawing-property-row input,
+.drawing-property-row select {
+  width: 100%;
+  height: 28px;
+  border: 1px solid #2f4050;
+  border-radius: 3px;
+  background: #0b1118;
+  color: #d1d8df;
+  font-size: 12px;
+  outline: none;
+  padding: 0 7px;
+}
+
+.drawing-property-row input:focus,
+.drawing-property-row select:focus {
+  border-color: #4ee093;
+}
+
+.drawing-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-bottom: 1px solid #20303e;
+  color: #d1d8df;
+  font-size: 11px;
+}
+
+.drawing-toggle-row input {
+  width: 14px;
+  height: 14px;
+  accent-color: #4ee093;
+}
+
+.drawing-context-menu button {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #d1d8df;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.drawing-context-menu > button {
+  border-bottom: 1px solid #20303e;
+  border-radius: 0;
+}
+
+.drawing-context-menu > button:last-child {
+  border-bottom: 0;
+}
+
+.drawing-context-menu button.active {
+  outline: 1px solid #4ee093;
+  outline-offset: 1px;
+  color: #4ee093;
+}
+
+.drawing-context-menu button:hover {
+  background: #182633;
+  color: #4ee093;
+}
+
+.drawing-text-editor-container {
+  pointer-events: auto;
+}
+
+.drawing-text-editor {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border: 1px solid #2f4050;
+  border-radius: 4px;
+  background: #101820;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .32);
+}
+
+.drawing-text-editor input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #315062;
+  border-radius: 3px;
+  background: #070b10;
+  color: #d9fff0;
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+  padding: 0 8px;
+}
+
+.drawing-text-editor input:focus {
+  border-color: #4ee093;
+}
+
+.theme-day .drawing-anchor-handle {
+  fill: #ffffff;
+  stroke: #198754;
+}
+
+.theme-day .drawing-anchor-handle:hover {
+  fill: #2dbf78;
+  stroke: #ffffff;
+}
+
+.theme-day .drawing-label,
+.theme-day .drawing-text {
+  fill: #1f2933;
+  stroke: rgba(255, 255, 255, .88);
+}
+
+.theme-day .drawing-fib-guide {
+  stroke: rgba(25, 135, 84, .34);
+}
+
+.theme-day .drawing-range-cap {
+  stroke: #198754;
+}
+
+.theme-day .drawing-alert-marker circle {
+  fill: #ffffff;
+}
+
+.theme-day .drawing-context-menu,
+.theme-day .drawing-text-editor {
+  border-color: #cfd7df;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(25, 38, 52, .16);
+}
+
+.theme-day .drawing-context-menu-title {
+  border-bottom-color: #d8e0e7;
+  color: #1f2933;
+}
+
+.theme-day .drawing-context-section,
+.theme-day .drawing-property-row,
+.theme-day .drawing-toggle-row,
+.theme-day .drawing-context-menu > button {
+  border-bottom-color: #d8e0e7;
+}
+
+.theme-day .drawing-context-back,
+.theme-day .drawing-property-row,
+.theme-day .drawing-context-menu > span {
+  color: #667789 !important;
+}
+
+.theme-day .drawing-property-row input,
+.theme-day .drawing-property-row select,
+.theme-day .drawing-text-editor input {
+  border-color: #cfd7df;
+  background: #ffffff;
+  color: #1f2933;
+}
+
+.theme-day .drawing-toggle-row,
+.theme-day .drawing-context-menu button {
+  color: #2d3742;
+}
+
+.theme-day .drawing-context-menu button.active {
+  outline-color: #2dbf78;
+  color: #198754;
+}
+
+.theme-day .drawing-context-menu button:hover {
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .drawing-context-section.swatches button {
+  border-color: #cfd7df;
+}

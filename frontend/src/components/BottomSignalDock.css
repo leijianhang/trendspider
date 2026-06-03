@@ -1,0 +1,5949 @@
+.bottom-signal-dock {
+  --dock-height: 260px;
+  flex: 0 0 var(--dock-height);
+  height: var(--dock-height);
+  display: grid;
+  grid-template-rows: 6px 34px 32px 38px minmax(0, 1fr);
+  min-width: 0;
+  min-height: 180px;
+  max-height: calc(100dvh - 150px);
+  overflow: hidden;
+  border-top: 1px solid #2b333c;
+  background: #0f151b;
+}
+
+.bottom-signal-dock.collapsed {
+  flex: 0 0 34px;
+  height: 34px;
+  grid-template-rows: 34px;
+  min-height: 34px;
+  max-height: 34px;
+}
+
+.bottom-signal-dock.has-config {
+  grid-template-rows: 6px 34px 32px 38px 48px minmax(0, 1fr);
+}
+
+.bottom-signal-dock.open.scanner-mode {
+  grid-template-rows: 6px 34px minmax(0, 1fr);
+}
+
+.bottom-signal-dock.open.strategy-mode {
+  grid-template-rows: 6px 34px minmax(0, 1fr);
+}
+
+.bottom-signal-dock.open.strategy-maximized {
+  max-height: calc(100dvh - 92px);
+}
+
+.bottom-signal-dock.open.scanner-mode .market-scanner-workspace {
+  padding-top: 10px;
+}
+
+.dock-resize-handle {
+  width: 100%;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid #263442;
+  background:
+    linear-gradient(90deg, transparent, rgba(127, 139, 152, .22), transparent),
+    #0b1117;
+  cursor: ns-resize;
+}
+
+.dock-resize-handle::before {
+  content: "";
+  width: 36px;
+  height: 2px;
+  display: block;
+  margin: 2px auto 0;
+  border-radius: 999px;
+  background: #5c6a77;
+}
+
+.bottom-signal-dock.resizing,
+.bottom-signal-dock.resizing * {
+  user-select: none;
+}
+
+body.resizing-bottom-dock {
+  cursor: ns-resize;
+  user-select: none;
+}
+
+.dock-tabs-bar {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid #2b333c;
+  background: #0d141b;
+}
+
+.dock-tabs-bar button {
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 5px 5px 0 0;
+  background: transparent;
+  color: #9eacb8;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dock-tabs-bar button:hover,
+.dock-tabs-bar .active {
+  border-color: #2d3d4c;
+  background: #101820;
+  color: #eafff5;
+}
+
+.dock-tabs-bar .active {
+  border-color: #2dbf78;
+  box-shadow: inset 0 -2px 0 #2dbf78;
+}
+
+.dock-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 10px;
+  border-bottom: 1px solid #263442;
+  background: #101820;
+}
+
+.dock-panel-header span {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.dock-panel-header strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.dock-panel-header em {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 11px;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock-panel-header div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dock-panel-header button {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 4px;
+  background: #151f29;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.dock-panel-header button:hover {
+  border-color: #2dbf78;
+  color: #eafff5;
+}
+
+.dock-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 10px;
+  border-bottom: 1px solid #263442;
+  background: #101820;
+}
+
+.dock-context {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.dock-context strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.dock-context span {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock-context em {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #4ee093;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.dock-context em.running {
+  color: #e2a044;
+}
+
+.dock-filters {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dock-filters button,
+.automation-strip button {
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+  border: 1px solid #2b3a47;
+  border-radius: 5px;
+  background: #151f29;
+  color: #aeb9c4;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dock-filters button:hover,
+.automation-strip button:hover,
+.dock-filters .primary,
+.dock-filters button.active {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.dock-config-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #263442;
+  background: #0d151d;
+}
+
+.dock-config-panel button {
+  min-width: 0;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 9px;
+  border: 1px solid #2b3a47;
+  border-radius: 5px;
+  background: #141e27;
+  color: #d9e2ea;
+  cursor: pointer;
+}
+
+.dock-config-panel button:hover {
+  border-color: #2dbf78;
+}
+
+.dock-config-panel span {
+  overflow: hidden;
+  color: #8d9aa7;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock-config-panel strong {
+  overflow: hidden;
+  color: #eafff5;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock-content {
+  min-height: 0;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.market-scanner-workspace {
+  position: relative;
+  display: grid;
+  grid-template-columns: 240px minmax(520px, 1fr) minmax(260px, 340px);
+  gap: 10px;
+}
+
+.market-scanner-workspace.results-expanded {
+  grid-template-columns: 220px minmax(360px, .75fr) minmax(360px, 1fr);
+}
+
+.market-scanner-workspace.library-collapsed {
+  grid-template-columns: 0 minmax(520px, 1fr) minmax(260px, 340px);
+}
+
+.market-scanner-workspace.results-expanded.library-collapsed {
+  grid-template-columns: 0 minmax(360px, .75fr) minmax(360px, 1fr);
+}
+
+.market-scanner-workspace.library-collapsed .scanner-library-pane {
+  width: 0;
+  min-width: 0;
+  pointer-events: none;
+  border-right: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.scanner-list-edge-toggle {
+  position: absolute;
+  left: 230px;
+  top: 112px;
+  z-index: 30;
+  width: 10px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #263542;
+  border-right-color: #263542;
+  border-radius: 3px 0 0 3px;
+  background: #0b1117;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.market-scanner-workspace.results-expanded .scanner-list-edge-toggle {
+  left: 210px;
+}
+
+.market-scanner-workspace.library-collapsed .scanner-list-edge-toggle {
+  left: 0;
+  border-left: 0;
+}
+
+.scanner-library-pane,
+.scanner-builder-pane,
+.scanner-results-pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #263542;
+  border-radius: 5px;
+  background: #101820;
+}
+
+.scanner-library-pane {
+  display: grid;
+  grid-template-rows: 34px 30px minmax(0, 1fr) 38px;
+}
+
+.scanner-library-top,
+.scanner-builder-header,
+.condition-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.scanner-library-top {
+  padding: 0 8px;
+  border-bottom: 1px solid #263542;
+  background: #121b24;
+}
+
+.scanner-library-top strong,
+.scanner-builder-header strong,
+.condition-group-title strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.scanner-library-top button,
+.scanner-builder-header button,
+.condition-group-title button {
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+  border: 1px solid #2b3a47;
+  border-radius: 4px;
+  background: #151f29;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scanner-library-top button:hover,
+.scanner-builder-header button:hover,
+.condition-group-title button:hover,
+.scanner-builder-header button.primary {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-library-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 5px 7px;
+  padding: 0 8px;
+  border-bottom: 1px solid #263542;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #0b1219;
+  color: #6f7d89;
+}
+
+.scanner-library-search input {
+  min-width: 0;
+  width: 100%;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #dce5ed;
+  font-size: 11px;
+}
+
+.scanner-library-search svg {
+  flex: 0 0 auto;
+  font-size: 11px;
+}
+
+.scanner-library-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px 7px;
+  border-bottom: 1px solid #263542;
+}
+
+.scanner-library-tabs button {
+  height: 22px;
+  border: 1px solid #2b3a47;
+  border-radius: 4px;
+  background: #111922;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.scanner-library-tabs button.active,
+.scanner-library-tabs button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-new-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 7px;
+  border-bottom: 1px solid #263542;
+  background: #0f171f;
+}
+
+.scanner-new-row button {
+  width: 100%;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #2dbf78;
+  border-radius: 4px;
+  background: #173426;
+  color: #eafff5;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.scanner-new-row button:hover {
+  background: #1d432f;
+}
+
+.scanner-library-list {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.scanner-library-item {
+  width: 100%;
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.scanner-library-select {
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding: 5px 7px;
+  border: 0;
+  background: transparent;
+  color: #cbd5df;
+  cursor: pointer;
+  text-align: left;
+}
+
+.scanner-library-item:hover,
+.scanner-library-item.active {
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-library-list span,
+.scanner-library-list strong,
+.scanner-library-list small {
+  min-width: 0;
+}
+
+.scanner-library-list strong,
+.scanner-library-list small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-library-list strong {
+  font-size: 11px;
+}
+
+.scanner-library-list small {
+  margin-top: 3px;
+  color: #7f8b98;
+  font-size: 10px;
+}
+
+.scanner-builder-pane {
+  display: grid;
+  grid-template-rows: 38px 42px minmax(0, 1fr);
+}
+
+.scanner-builder-pane:has(.new-scanner-start) {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.scanner-builder-header {
+  min-height: 34px;
+  padding: 4px 9px;
+  border-bottom: 1px solid #263542;
+  background: #101820;
+}
+
+.scanner-title-control {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.scanner-name-input {
+  width: 220px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid #2a3744;
+  border-radius: 3px;
+  outline: none;
+  background: #0b1219;
+  color: #eef4f8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.scanner-name-input:hover,
+.scanner-name-input:focus {
+  border-color: #365064;
+  background: #111b24;
+}
+
+.scanner-title-control strong {
+  overflow: hidden;
+  max-width: 260px;
+  color: #eef4f8;
+  font-size: 12px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-header-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.scanner-action-menu-wrap {
+  position: relative;
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.scanner-more-button {
+  width: 28px;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.scanner-action-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  z-index: 50;
+  width: 138px;
+  display: grid;
+  padding: 4px 0;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #111820;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .42);
+}
+
+.scanner-action-menu button {
+  width: 100%;
+  height: 28px;
+  justify-content: flex-start;
+  padding: 0 9px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #cbd5df;
+  font-size: 12px;
+  text-align: left;
+}
+
+.scanner-action-menu button:hover {
+  background: #173426 !important;
+  color: #eafff5;
+}
+
+.scanner-action-menu button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.scanner-settings-strip {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-bottom: 1px solid #263542;
+  background: #0d141b;
+  overflow-x: auto;
+}
+
+.scanner-settings-kicker {
+  flex: 0 0 auto;
+  color: #6f7d89;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.scanner-settings-strip label {
+  flex: 0 0 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #71808d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: none;
+}
+
+.scanner-settings-strip label > span:first-child {
+  color: #71808d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.scanner-settings-strip select {
+  min-width: 0;
+  height: 24px;
+  padding: 0 20px 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #101820;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scanner-universe-field select {
+  width: 158px;
+}
+
+.scanner-chart-type-field select {
+  width: 132px;
+}
+
+.scanner-settings-strip .scanner-toggle {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #101820;
+  color: #aeb9c4;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.scanner-toggle input {
+  accent-color: #2dbf78;
+}
+
+.scanner-settings-strip select:hover,
+.scanner-settings-strip select:focus,
+.scanner-settings-strip .scanner-toggle:hover {
+  border-color: #365064;
+  background: #13202a;
+}
+
+.new-scanner-start {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  padding: 22px;
+  background:
+    linear-gradient(135deg, rgba(45, 191, 120, .08), transparent 46%),
+    #101820;
+}
+
+.new-scanner-title {
+  display: grid;
+  gap: 7px;
+  max-width: 560px;
+}
+
+.new-scanner-title strong {
+  color: #eef4f8;
+  font-size: 18px;
+}
+
+.new-scanner-title span {
+  color: #8d9aa7;
+  font-size: 12px;
+}
+
+.new-scanner-options {
+  display: grid;
+  grid-template-columns: minmax(0, 360px);
+  gap: 10px;
+}
+
+.new-scanner-options button {
+  min-height: 102px;
+  display: grid;
+  align-content: center;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid #2b3a47;
+  border-radius: 5px;
+  background: #111922;
+  color: #cbd5df;
+  cursor: pointer;
+  text-align: left;
+}
+
+.new-scanner-options button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+}
+
+.new-scanner-options strong {
+  color: #eef4f8;
+  font-size: 13px;
+}
+
+.new-scanner-options span {
+  color: #8d9aa7;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.scanner-condition-builder {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  padding: 7px 9px;
+  overflow: hidden;
+}
+
+.scanner-ai-builder {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.scanner-ai-builder label {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 20px minmax(0, 1fr);
+  gap: 6px;
+  color: #8d9aa7;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.scanner-ai-builder textarea {
+  min-height: 0;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #2b3a47;
+  border-radius: 5px;
+  outline: none;
+  background: #0d141b;
+  color: #dce5ed;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.scanner-ai-builder div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.scanner-ai-builder button {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid #2b3a47;
+  border-radius: 4px;
+  background: #151f29;
+  color: #cbd5df;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scanner-ai-builder button:first-child {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-script-card {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 34px minmax(0, 1fr) auto;
+  overflow: hidden;
+  border: 1px solid #2b3a47;
+  border-radius: 5px;
+  background: #0d141b;
+}
+
+.scanner-script-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 8px;
+  border-bottom: 1px solid #263542;
+  background: #0f171f;
+}
+
+.scanner-group-head {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.scanner-script-logic {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.scanner-rule-label {
+  color: #768491;
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.scanner-script-logic select {
+  width: 154px;
+  height: 22px;
+  padding: 0 19px 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #121b24;
+  color: #dce5ed;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.scanner-script-logic strong {
+  overflow: hidden;
+  color: #eef4f8;
+  font-size: 10px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-script-logic small {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 10px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-script-controls {
+  min-width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scanner-script-controls label {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scanner-script-controls label > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.scanner-script-controls select,
+.scanner-script-controls input {
+  height: 22px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #121b24;
+  color: #cbd5df;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.scanner-comment-row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  padding: 1px 0 5px 1px;
+}
+
+.scanner-comment-row input {
+  width: 260px;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid #293744;
+  border-radius: 3px;
+  background: #0a1118;
+  color: #aeb9c4;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: inset 2px 0 #31414f;
+}
+
+.scanner-comment-row input:focus {
+  border-color: #365064;
+  outline: none;
+  background: #0f1922;
+  color: #dce5ed;
+}
+
+.scanner-comment-row input::placeholder {
+  color: #63717e;
+}
+
+.scanner-script-controls select {
+  width: 108px;
+  padding: 0 18px 0 7px;
+}
+
+.scanner-script-controls input {
+  width: 42px;
+  padding: 0 6px;
+}
+
+.scanner-script-controls em {
+  color: #7f8b98;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.scanner-script-controls button,
+.scanner-add-parameter button,
+.condition-remove-button {
+  height: 22px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #121b24;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.scanner-script-controls button.active {
+  border-color: #365064;
+  background: #172533;
+  color: #dce5ed;
+}
+
+.scanner-script-controls button:hover,
+.scanner-add-parameter button:hover,
+.condition-remove-button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-condition-stack {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 3px;
+  overflow: auto;
+  padding: 6px 7px;
+}
+
+.scanner-empty-conditions {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  color: #7f8b98;
+}
+
+.scanner-empty-conditions span {
+  color: #7f8b98;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scanner-condition-block {
+  width: max-content;
+  max-width: none;
+  display: inline-grid;
+  grid-template-columns: max-content 20px;
+  align-items: center;
+  gap: 3px;
+  min-height: 28px;
+  padding: 1px 2px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.scanner-condition-block:hover {
+  border-color: #24313d;
+  background: #0d151d;
+}
+
+.scanner-nested-group {
+  width: max-content;
+  max-width: none;
+  display: grid;
+  gap: 5px;
+  padding: 4px 5px 5px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #0a1118;
+}
+
+.scanner-nested-group-header {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 0 4px;
+  border-bottom: 1px solid #1f2c37;
+}
+
+.scanner-nested-group-body {
+  display: grid;
+  justify-items: start;
+  gap: 3px;
+  padding-left: 12px;
+  border-left: 2px solid #2a3947;
+}
+
+.nested-add-condition {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 7px;
+  border: 1px dashed #31414f;
+  border-radius: 3px;
+  background: transparent;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.nested-add-condition:hover {
+  border-color: #2dbf78;
+  color: #eafff5;
+}
+
+.nested-add-parameter {
+  position: relative;
+}
+
+.condition-block-body {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.condition-block-body label {
+  flex: 0 0 auto;
+  display: block;
+  color: #71808d;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.condition-source-field {
+  width: 82px;
+}
+
+.condition-timeframe-field {
+  width: 52px;
+}
+
+.condition-left-field,
+.condition-right-field {
+  width: 124px;
+}
+
+.condition-operator-field {
+  width: 112px;
+}
+
+.condition-right-source-field {
+  width: 82px;
+}
+
+.condition-offset-field,
+.condition-threshold-field {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 3px;
+}
+
+.condition-offset-field select {
+  width: 78px;
+}
+
+.condition-offset-field input {
+  width: 38px;
+  padding-right: 6px;
+}
+
+.condition-block-body label span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.condition-block-body select,
+.condition-block-body input {
+  width: 100%;
+  min-width: 0;
+  height: 22px;
+  padding: 0 18px 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+  outline: none;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035);
+}
+
+.condition-block-body select:hover,
+.condition-block-body input:hover,
+.condition-block-body select:focus,
+.condition-block-body input:focus {
+  border-color: #365064;
+  background: #13202a;
+}
+
+.condition-block-body .condition-offset-field select {
+  width: 78px;
+  color: #9eabb6;
+}
+
+.condition-block-body .condition-offset-field input {
+  width: 38px;
+  padding: 0 5px;
+}
+
+.condition-threshold-field em,
+.condition-threshold-field b {
+  color: #7f8b98;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: none;
+}
+
+.condition-block-body .condition-threshold-field input {
+  width: 38px;
+  padding: 0 5px;
+}
+
+.condition-block-body input::placeholder {
+  color: #63717e;
+}
+
+.condition-remove-button {
+  align-self: center;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  color: #667480;
+  opacity: .72;
+}
+
+.scanner-condition-block:hover .condition-remove-button {
+  opacity: 1;
+}
+
+.scanner-add-parameter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 8px;
+  border-top: 1px solid #263542;
+  background: #101820;
+}
+
+.scanner-add-parameter > button {
+  padding: 0 9px;
+  color: #eafff5;
+  border-color: #2dbf78;
+  background: #173426;
+}
+
+.scanner-add-menu {
+  position: absolute;
+  z-index: 40;
+  left: 8px;
+  bottom: calc(100% + 5px);
+  width: 172px;
+  display: grid;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid #2f4050;
+  border-radius: 3px;
+  background: #0f1720;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .5);
+}
+
+.scanner-add-menu button {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0 8px;
+  background: transparent;
+  border-color: transparent;
+  border-radius: 2px;
+  color: #c8d3dd;
+  text-align: left;
+}
+
+.scanner-add-menu button:hover {
+  background: #173426;
+}
+
+.scanner-add-menu.nested {
+  left: 0;
+  bottom: calc(100% + 4px);
+}
+
+.scanner-results-pane {
+  display: grid;
+  grid-template-rows: 34px minmax(0, 1fr);
+}
+
+.scanner-results-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 7px 0 9px;
+  border-bottom: 1px solid #263542;
+  background: #121b24;
+}
+
+.scanner-results-title span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.scanner-results-title strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.scanner-results-title small {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-results-title small.success {
+  color: #55d895;
+}
+
+.scanner-results-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scanner-results-actions button {
+  height: 24px;
+  width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #151f29;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.scanner-results-actions button:hover,
+.scanner-results-actions button.active {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.scanner-results-list {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 5px 0;
+  scrollbar-gutter: stable;
+}
+
+.scanner-result-row {
+  width: 100%;
+  min-height: 34px;
+  display: grid;
+  grid-template-columns: 4px minmax(0, 1fr) 74px;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 4px 7px 4px 0;
+  border: 0;
+  border-bottom: 1px solid #1d2832;
+  background: transparent;
+  color: #cbd5df;
+  cursor: pointer;
+  text-align: left;
+}
+
+.scanner-result-row:hover,
+.scanner-result-row.active {
+  background: #16251f;
+}
+
+.scanner-result-row.active {
+  box-shadow: inset 2px 0 0 #2dbf78;
+}
+
+.scanner-result-row > i {
+  width: 4px;
+  align-self: stretch;
+  background: #7f8b98;
+}
+
+.scanner-result-row.new > i {
+  background: #5bb8ff;
+}
+
+.scanner-result-row.kept > i {
+  background: #808a94;
+}
+
+.scanner-result-symbol,
+.scanner-result-price {
+  min-width: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.scanner-result-symbol strong,
+.scanner-result-symbol small,
+.scanner-result-price strong,
+.scanner-result-price em {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-result-symbol strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.scanner-result-symbol small {
+  color: #7f8b98;
+  font-size: 10px;
+}
+
+.scanner-result-price {
+  justify-items: end;
+}
+
+.scanner-result-price strong {
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scanner-result-price em {
+  color: #55d895;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.strategy-performance-chart {
+  position: relative;
+  min-height: 96px;
+  margin: 0 8px 8px;
+  border: 1px solid #263542;
+  border-radius: 4px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(80, 107, 124, .18) 24px),
+    repeating-linear-gradient(90deg, transparent 0 55px, rgba(80, 107, 124, .14) 56px),
+    #0b1117;
+}
+
+.strategy-performance-chart svg {
+  position: absolute;
+  inset: 8px 8px 22px;
+  width: calc(100% - 16px);
+  height: calc(100% - 30px);
+}
+
+.strategy-performance-chart polyline {
+  fill: none;
+  stroke: #4ee093;
+  stroke-width: 2.4;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 6px rgba(78, 224, 147, .42));
+}
+
+.strategy-chart-labels {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  color: #657380;
+  font-size: 9px;
+}
+
+.ts-strategy-widget {
+  display: grid;
+  grid-template-rows: 34px 38px minmax(0, 1fr);
+  padding: 0;
+  overflow: hidden;
+  background: #0d1116;
+}
+
+.ts-body-layout {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 206px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.ts-strategy-list {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 32px 28px 30px minmax(0, 1fr);
+  gap: 0;
+  border-right: 1px solid #263542;
+  background: #0b1117;
+}
+
+.ts-strategy-list > input {
+  margin: 4px 7px;
+  min-width: 0;
+  height: 22px;
+  padding: 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #0c131a;
+  color: #dce5ed;
+  font-size: 11px;
+}
+
+.ts-list-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px 7px;
+  border-bottom: 1px solid #263542;
+}
+
+.ts-list-tabs button,
+.ts-list-items button {
+  border: 1px solid #2b3a47;
+  background: #111820;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ts-list-tabs button {
+  height: 22px;
+  border-radius: 3px;
+}
+
+.ts-list-tabs button.active,
+.ts-list-tabs button:hover,
+.ts-list-items button.active,
+.ts-list-items button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.ts-list-items {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  overflow-y: auto;
+  padding: 7px;
+}
+
+.ts-list-items button {
+  min-height: 42px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  padding: 6px 7px;
+  border-radius: 3px;
+  text-align: left;
+}
+
+.ts-new-strategy-button {
+  height: 38px;
+  border: 0;
+  border-top: 1px solid #263542;
+  background: #101820;
+  color: #88d4ff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.ts-new-strategy-button:hover {
+  background: #173426;
+  color: #eafff5;
+}
+
+.ts-list-items strong,
+.ts-list-items span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ts-list-items strong {
+  color: #dce5ed;
+  font-size: 11px;
+}
+
+.ts-list-items span {
+  color: #7f8b98;
+  font-size: 10px;
+}
+
+.ts-list-empty {
+  padding: 8px 2px;
+  color: #7f8b98;
+  font-size: 11px;
+}
+
+.ts-topline,
+.ts-settings-row,
+.ts-script-card-head,
+.ts-results-tabs {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #2a333d;
+  background: #111820;
+}
+
+.ts-topline {
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.ts-title-block {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.ts-title-block strong {
+  color: #eef4f8;
+  font-size: 13px;
+}
+
+.ts-title-block span {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ts-top-actions,
+.ts-top-actions button,
+.ts-settings-row button,
+.ts-script-card-head button,
+.ts-condition-line button,
+.ts-add-parameter button,
+.ts-results-tabs button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ts-top-actions button,
+.ts-settings-row button,
+.ts-script-card-head button,
+.ts-condition-line button,
+.ts-add-parameter button,
+.ts-results-tabs button {
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #151d26;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-settings-row {
+  padding: 5px 10px;
+  overflow-x: auto;
+}
+
+.ts-settings-row label {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #71808d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ts-settings-row input,
+.ts-settings-row select,
+.ts-script-card-head input {
+  height: 24px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #0c131a;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-settings-row input {
+  width: 232px;
+  padding: 0 8px;
+}
+
+.ts-settings-row select {
+  min-width: 112px;
+  padding: 0 20px 0 7px;
+}
+
+.ts-settings-row button:hover,
+.ts-top-actions button:hover,
+.ts-script-card-head button:hover,
+.ts-condition-line button:hover,
+.ts-add-parameter button:hover,
+.ts-results-tabs button:hover,
+.ts-results-tabs button.active,
+.ts-settings-row button.active,
+.ts-run-button,
+.ts-ai-explain {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.ts-run-button {
+  min-width: 76px;
+}
+
+.ts-ai-explain {
+  min-width: 86px;
+}
+
+.ts-settings-popover-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ts-settings-popover {
+  position: absolute;
+  z-index: 30;
+  top: 30px;
+  left: 0;
+  width: 230px;
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #111820;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
+}
+
+.ts-settings-popover label {
+  display: grid;
+  gap: 4px;
+  color: #71808d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ts-settings-popover select,
+.ts-settings-popover input {
+  width: 100%;
+  height: 24px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #0c131a;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-settings-popover .ts-settings-check {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  text-transform: none;
+}
+
+.ts-settings-popover .ts-settings-check input {
+  width: 14px;
+  height: 14px;
+  accent-color: #2dbf78;
+}
+
+.ts-editor-scroll {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 8px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.ts-results {
+  grid-column: 1 / -1;
+}
+
+.ts-script-card {
+  margin: 7px;
+  border: 1px solid #2a3743;
+  border-radius: 3px;
+  background: #0a1016;
+  overflow: hidden;
+}
+
+.ts-script-card-head {
+  min-height: 32px;
+  justify-content: space-between;
+  padding: 0 8px;
+  background: #0f1720;
+}
+
+.ts-script-card-head input {
+  width: 174px;
+  padding: 0 7px;
+  border-color: transparent;
+  background: #0a1016;
+  color: #eef4f8;
+}
+
+.ts-script-card-head div {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ts-script-card-head button {
+  width: 24px;
+  padding: 0;
+}
+
+.ts-logic-row {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 7px;
+  border-bottom: 1px solid #263542;
+  background: #0b1117;
+}
+
+.ts-logic-row select {
+  height: 22px;
+  min-width: 146px;
+  padding: 0 20px 0 7px;
+  border: 1px solid #2b3a47;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-logic-row strong {
+  color: #b7c2cc;
+  font-size: 11px;
+}
+
+.ts-logic-row span {
+  margin-left: auto;
+  color: #697784;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ts-condition-list {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 3px;
+  min-height: 82px;
+  overflow-x: auto;
+  padding: 6px 7px;
+}
+
+.ts-condition-line {
+  width: max-content;
+  min-height: 27px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: #cbd5df;
+  font-size: 11px;
+}
+
+.ts-condition-line:hover {
+  border-color: #24313d;
+  background: #0d151d;
+}
+
+.ts-condition-line button {
+  height: 22px;
+  min-width: 58px;
+  justify-content: flex-start;
+  padding: 0 7px;
+  border-color: #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035);
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-condition-line select {
+  height: 22px;
+  min-width: 74px;
+  padding: 0 20px 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035);
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-condition-line select:nth-child(3),
+.ts-condition-line select:nth-child(5) {
+  min-width: 118px;
+}
+
+.ts-condition-line select:nth-child(4) {
+  min-width: 112px;
+  color: #aeb9c4;
+}
+
+.ts-condition-line button:nth-child(2),
+.ts-condition-line button:nth-child(4) {
+  min-width: 96px;
+}
+
+.ts-condition-line button:nth-child(3) {
+  min-width: 86px;
+  color: #aeb9c4;
+}
+
+.ts-condition-line button:nth-child(5) {
+  min-width: 64px;
+  color: #8e9aa6;
+}
+
+.ts-condition-line .ts-condition-remove {
+  width: 20px;
+  min-width: 20px;
+  justify-content: center;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  color: #667480;
+  opacity: .72;
+}
+
+.ts-condition-line:hover .ts-condition-remove {
+  opacity: 1;
+}
+
+.ts-signal-list-editor {
+  display: grid;
+  gap: 7px;
+  padding: 8px;
+  background: #0a1016;
+}
+
+.ts-exit-condition-card {
+  display: grid;
+  gap: 0;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #0b1117;
+  overflow: hidden;
+}
+
+.ts-exit-condition-head {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 8px;
+  border-bottom: 1px solid #263542;
+  background: #101820;
+}
+
+.ts-exit-condition-head strong {
+  color: #eef4f8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ts-exit-condition-head div {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ts-exit-condition-head button {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: #88d4ff;
+  cursor: pointer;
+}
+
+.ts-exit-condition-body {
+  display: grid;
+  gap: 7px;
+  padding: 8px;
+}
+
+.ts-signal-list-editor textarea {
+  min-width: 0;
+  border: 1px solid #2a3743;
+  border-radius: 3px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-signal-list-actions span {
+  color: #7f8b98;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ts-inline-check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8e9aa6;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-inline-check input {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  accent-color: #2dbf78;
+}
+
+.ts-signals-head {
+  display: grid;
+  gap: 3px;
+  padding: 8px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+}
+
+.ts-signals-head strong {
+  color: #eef4f8;
+  font-size: 12px;
+}
+
+.ts-signals-head span {
+  color: #7f8b98;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ts-signal-list-editor textarea {
+  width: 100%;
+  min-height: 96px;
+  resize: vertical;
+  padding: 8px;
+  line-height: 1.45;
+}
+
+.ts-signal-format-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.ts-signal-format-grid span {
+  min-width: 0;
+  overflow: hidden;
+  padding: 5px 7px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #101821;
+  color: #8e9aa6;
+  font-size: 10px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ts-signal-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ts-signal-list-actions button {
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 9px;
+  border: 1px dashed #31414f;
+  border-radius: 3px;
+  background: transparent;
+  color: #9aa7b2;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-signal-list-actions button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.ts-add-parameter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  border-top: 1px solid #263542;
+  background: #101820;
+}
+
+.ts-add-parameter button {
+  height: 22px;
+  padding: 0 9px;
+  border-style: dashed;
+  border-color: #31414f;
+  background: transparent;
+  color: #9aa7b2;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ts-add-parameter span {
+  color: #6f7c87;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ts-results {
+  border: 1px solid #263542;
+  border-radius: 4px;
+  background: #0f151c;
+  overflow: hidden;
+}
+
+.ts-results-tabs {
+  min-height: 34px;
+  padding: 0 8px;
+}
+
+.ts-results-tabs span {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ts-results-body {
+  display: grid;
+  grid-template-columns: 240px minmax(260px, 1fr) 270px;
+  gap: 8px;
+  padding: 8px;
+}
+
+.ts-metrics-strip {
+  display: grid;
+  gap: 6px;
+}
+
+.ts-metrics-strip div {
+  padding: 8px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+}
+
+.ts-metrics-strip span {
+  display: block;
+  color: #7f8b98;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ts-metrics-strip strong {
+  display: block;
+  margin-top: 5px;
+  color: #eafff5;
+  font-size: 13px;
+}
+
+.ts-result-chart .strategy-performance-chart {
+  height: 100%;
+  min-height: 152px;
+  margin: 0;
+}
+
+.strategy-performance-chart.empty {
+  min-height: 152px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+  color: #7f8b98;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ts-pbe-grid {
+  min-height: 152px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.ts-pbe-grid div {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+}
+
+.ts-pbe-grid span,
+.ts-pbe-grid em {
+  overflow: hidden;
+  color: #7f8b98;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ts-pbe-grid strong {
+  color: #eafff5;
+  font-size: 18px;
+}
+
+.ts-pbe-grid i {
+  height: 4px;
+  border-radius: 2px;
+  background: #4ee093;
+}
+
+.ts-tabular-data {
+  min-height: 152px;
+  overflow: auto;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+}
+
+.ts-tabular-head,
+.ts-tabular-row {
+  display: grid;
+  grid-template-columns: 86px 86px 64px 76px minmax(150px, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-width: 520px;
+  padding: 0 8px;
+}
+
+.ts-tabular-head {
+  height: 26px;
+  border-bottom: 1px solid #263542;
+  color: #71808d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ts-tabular-row {
+  min-height: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, .04);
+  color: #cbd5df;
+  font-size: 11px;
+}
+
+.ts-tabular-row strong,
+.ts-positions-table button.win strong {
+  color: #4ee093;
+}
+
+.ts-tabular-row.loss strong,
+.ts-positions-table button.loss strong {
+  color: #ff8a9a;
+}
+
+.ts-tabular-row em {
+  overflow: hidden;
+  color: #8e9aa6;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ts-positions-table {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+
+.ts-positions-table button {
+  min-height: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 58px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 8px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #121b24;
+  color: #cbd5df;
+  cursor: pointer;
+  font-size: 11px;
+  text-align: left;
+}
+
+.ts-trade-filter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.ts-trade-filter button {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #111820;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.ts-trade-filter button.active,
+.ts-trade-filter button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.ts-empty-result {
+  padding: 9px;
+  border: 1px dashed #263542;
+  border-radius: 3px;
+  color: #7f8b98;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ts-positions-table strong {
+  color: #4ee093;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-widget {
+  grid-template-rows: 38px minmax(0, 1fr);
+  background: #fff;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row {
+  height: 38px;
+  padding: 7px 10px;
+  border-bottom: 1px dashed #cfcfcf;
+  background: #fff;
+  overflow-x: auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row label {
+  gap: 4px;
+  color: #333;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row label span {
+  display: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row input,
+.bottom-signal-dock.strategy-mode .ts-settings-row select {
+  height: 24px;
+  border: 1px solid #c9c9c9;
+  border-radius: 2px;
+  background: #f0f0f0;
+  color: #222;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row input {
+  width: 200px;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row button {
+  height: 24px;
+  border: 1px solid #c9c9c9;
+  border-radius: 2px;
+  background: #f7f7f7 !important;
+  color: #4e45c7 !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-run-button {
+  border-color: #4e45c7 !important;
+  background: #4e45c7 !important;
+  color: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout {
+  grid-template-columns: 204px minmax(0, 1fr);
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list {
+  grid-template-rows: 36px 28px minmax(0, 1fr) 38px;
+  border-right: 1px solid #bfbfbf;
+  background: #efefef;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list > input {
+  height: 24px;
+  margin: 8px 7px 4px;
+  border: 1px solid #d7d7d7;
+  border-radius: 2px;
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs {
+  grid-row: 2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 0 7px;
+  border-bottom: 0;
+  background: transparent;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button {
+  height: 24px;
+  border: 1px solid #cfcfcf;
+  border-right: 0;
+  border-radius: 0;
+  background: #f8f8f8;
+  color: #4e45c7;
+  font-size: 10px;
+  font-weight: 400;
+  padding: 0 2px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button:last-child {
+  border-right: 1px solid #cfcfcf;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button.active {
+  border-color: #47a75d;
+  background: #37a65a;
+  color: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items {
+  grid-row: 3;
+  gap: 0;
+  padding: 8px 6px;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items button {
+  min-height: 44px;
+  padding: 5px 0;
+  border: 0;
+  border-bottom: 1px solid #dedede;
+  border-radius: 0;
+  background: transparent;
+  color: #222;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items strong {
+  color: #333;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items span {
+  color: #009948;
+  font-size: 11px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-new-strategy-button {
+  grid-row: 4;
+  border-top: 1px solid #263542;
+  background: #0b1117;
+  color: #88d4ff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-scroll {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  padding: 0 10px 14px;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 10px 0 8px;
+  border-bottom: 1px dashed #cfcfcf;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+  padding-right: 12px;
+  border-right: 1px dashed #2a333d;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section:nth-of-type(2) {
+  padding-left: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section-title {
+  color: #333;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-title {
+  display: block;
+  margin-top: 2px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-wrap {
+  position: static;
+  width: max-content;
+  max-width: 100%;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button {
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid #bfc1ca;
+  border-radius: 2px;
+  background: #fff;
+  color: #4e45c7;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu {
+  position: absolute;
+  z-index: 20;
+  top: 34px;
+  right: 0;
+  left: auto;
+  width: 154px;
+  display: grid;
+  padding: 10px 0;
+  border: 1px solid #d3d3d3;
+  border-radius: 2px;
+  background: #f2f2f2;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, .22);
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button span {
+  color: #b6aef2;
+  font-size: 15px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button.active {
+  background: #fff;
+  color: #4e45c7;
+}
+
+.bottom-signal-dock.strategy-mode .ts-trendspider-editor-block {
+  display: grid;
+  gap: 0;
+  align-content: start;
+  min-height: 112px;
+  border: 1px solid #d8d8d8;
+  background: #0b1117;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar button {
+  border: 0;
+  background: transparent;
+  color: #5a4ed6;
+  cursor: pointer;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 12px;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-left,
+.bottom-signal-dock.strategy-mode .ts-script-tools {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools {
+  flex: 0 0 auto;
+  min-width: 148px;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools span {
+  color: #222;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools input {
+  width: 92px;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  color: #222;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools input:hover,
+.bottom-signal-dock.strategy-mode .ts-script-tools input:focus {
+  border-color: #c8c8c8;
+  background: #fff;
+  outline: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar select {
+  height: 24px;
+  border: 0;
+  background: transparent;
+  color: #5b5293;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  color: #222;
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line a,
+.bottom-signal-dock.strategy-mode .ts-editor-help-line button {
+  border: 0;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line button {
+  margin-left: auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-list {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  min-height: 0;
+  padding: 0 12px 4px;
+  overflow-x: auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-line {
+  width: max-content;
+  max-width: 100%;
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-line select {
+  flex: 0 0 auto;
+  height: 22px;
+  box-shadow: none;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-remove {
+  color: #5a4ed6;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter {
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0 10px 10px;
+  border-top: 0;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter button {
+  height: 28px;
+  border: 1px solid #bfc1ca;
+  border-radius: 2px;
+  background: #fff;
+  color: #4e45c7;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter span {
+  color: #777;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor {
+  padding: 10px;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signals-head {
+  border-color: #d8d8d8;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signals-head span,
+.bottom-signal-dock.strategy-mode .ts-signal-list-actions span {
+  color: #555;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor textarea {
+  border-color: #c8c8c8;
+  background: #fff;
+  color: #222;
+  box-shadow: none;
+  font-weight: 400;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signal-format-grid span {
+  border-color: #d8d8d8;
+  background: #f8f8f8;
+  color: #5b5293;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signal-list-actions button {
+  border-color: #bfc1ca;
+  background: #fff;
+  color: #4e45c7;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results {
+  margin-top: 10px;
+  border-color: #d8d8d8;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results:not(.ready) {
+  max-height: 42px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results:not(.ready) .ts-results-body {
+  display: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results-tabs {
+  border-bottom-color: #d8d8d8;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results-tabs button {
+  border-color: #c8c8c8;
+  background: #fff;
+  color: #4e45c7;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results-body,
+.bottom-signal-dock.strategy-mode .ts-metrics-strip div,
+.bottom-signal-dock.strategy-mode .ts-pbe-grid div,
+.bottom-signal-dock.strategy-mode .ts-tabular-data,
+.bottom-signal-dock.strategy-mode .ts-positions-table button {
+  border-color: #d8d8d8;
+  background: #fff;
+  color: #222;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-widget {
+  grid-template-rows: minmax(0, 1fr);
+  background: #0d1116;
+  color: #cbd5df;
+  font-family: inherit;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row {
+  border-bottom: 1px solid #2a333d;
+  background: #111820;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row label {
+  color: #71808d;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row input,
+.bottom-signal-dock.strategy-mode .ts-settings-row select,
+.bottom-signal-dock.strategy-mode .ts-settings-row button,
+.bottom-signal-dock.strategy-mode .ts-settings-popover input,
+.bottom-signal-dock.strategy-mode .ts-settings-popover select {
+  border-color: #2b3a47;
+  background: #0c131a !important;
+  color: #dce5ed !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-popover {
+  border-color: #263542;
+  background: #111820;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-popover label {
+  color: #71808d;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row button:hover,
+.bottom-signal-dock.strategy-mode .ts-run-button {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout,
+.bottom-signal-dock.strategy-mode .ts-editor-scroll,
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  background: #0d1116;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list {
+  border-right: 1px solid #263542;
+  background: #0b1117;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list > input {
+  border-color: #2b3a47;
+  background: #0c131a;
+  color: #dce5ed;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button {
+  border-color: #2b3a47;
+  background: #111820;
+  color: #8e9aa6;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button.active,
+.bottom-signal-dock.strategy-mode .ts-list-tabs button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items {
+  border-bottom: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items button {
+  border-bottom: 1px solid #1c2630;
+  background: transparent;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items button.active,
+.bottom-signal-dock.strategy-mode .ts-list-items button:hover {
+  background: #13251d;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items strong,
+.bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.bottom-signal-dock.strategy-mode .ts-condition-mode-title,
+.bottom-signal-dock.strategy-mode .ts-signals-head strong {
+  color: #eef4f8;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items span {
+  color: #4ee093;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-empty {
+  color: #7f8b98;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  border-bottom: 1px dashed #2a333d;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button,
+.bottom-signal-dock.strategy-mode .ts-add-parameter button,
+.bottom-signal-dock.strategy-mode .ts-signal-list-actions button {
+  border-color: #2b3a47;
+  background: #151d26;
+  color: #aeb9c4;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button:hover,
+.bottom-signal-dock.strategy-mode .ts-add-parameter button:hover,
+.bottom-signal-dock.strategy-mode .ts-signal-list-actions button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu {
+  border-color: #2a333d;
+  background: #111820;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .38);
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button {
+  color: #cbd5df;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button span {
+  color: #667480;
+  font-size: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button span::before {
+  content: "☆";
+  font-size: 15px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button.active {
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button.active {
+  box-shadow: inset 3px 0 #2dbf78;
+}
+
+.bottom-signal-dock.strategy-mode .ts-trendspider-editor-block,
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar,
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor {
+  border-color: #263542;
+  background: #0b1117;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line {
+  color: #aeb9c4;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line a,
+.bottom-signal-dock.strategy-mode .ts-editor-help-line button,
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar button {
+  color: #88d4ff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.bottom-signal-dock.strategy-mode .ts-condition-line select,
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor textarea {
+  border-color: #2a3743;
+  background: #101821;
+  color: #dce5ed;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar select {
+  color: #88d4ff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signals-head,
+.bottom-signal-dock.strategy-mode .ts-results,
+.bottom-signal-dock.strategy-mode .ts-results-tabs,
+.bottom-signal-dock.strategy-mode .ts-results-body,
+.bottom-signal-dock.strategy-mode .ts-metrics-strip div,
+.bottom-signal-dock.strategy-mode .ts-pbe-grid div,
+.bottom-signal-dock.strategy-mode .ts-tabular-data,
+.bottom-signal-dock.strategy-mode .ts-positions-table button {
+  border-color: #263542;
+  background: #121b24;
+  color: #cbd5df;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signals-head span,
+.bottom-signal-dock.strategy-mode .ts-signal-list-actions span,
+.bottom-signal-dock.strategy-mode .ts-add-parameter span {
+  color: #7f8b98;
+}
+
+.bottom-signal-dock.strategy-mode .ts-signal-format-grid span,
+.bottom-signal-dock.strategy-mode .ts-results-tabs button {
+  border-color: #263542;
+  background: #111820;
+  color: #8e9aa6;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results-tabs button.active,
+.bottom-signal-dock.strategy-mode .ts-results-tabs button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-editor-surface {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-height: 74px;
+  padding: 0 12px 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack {
+  display: grid;
+  justify-items: start;
+  gap: 5px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack button {
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #151d26;
+  color: #aeb9c4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact {
+  margin-top: -1px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button {
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #88d4ff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-transform: lowercase;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button:hover {
+  border-color: transparent;
+  background: transparent;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-footnote {
+  color: #7f8b98;
+  font-size: 11px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu {
+  width: 176px;
+  display: grid;
+  padding: 4px 0;
+  border: 1px solid #2a333d;
+  border-radius: 3px;
+  background: #121b24;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .42);
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu button {
+  min-height: 34px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  padding: 5px 9px;
+  border: 0;
+  background: transparent;
+  color: #dce5ed;
+  cursor: pointer;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu strong {
+  color: #eef4f8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu span {
+  color: #7f8b98;
+  font-size: 11px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu button:hover {
+  background: #173426;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker {
+  position: relative;
+  min-height: 62px;
+  padding: 0 0 4px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 26px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-line span {
+  color: #aeb9c4;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-line button {
+  border: 0;
+  background: transparent;
+  color: #7f8b98;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu {
+  width: 154px;
+  display: grid;
+  padding: 7px 6px 6px;
+  border: 1px solid #2a333d;
+  border-radius: 2px;
+  background: #3a3a3a;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .45);
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu input {
+  height: 22px;
+  margin-bottom: 5px;
+  padding: 0 7px;
+  border: 1px solid #8a8a8a;
+  border-radius: 3px;
+  background: #f4f4f4;
+  color: #222;
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu button {
+  height: 27px;
+  justify-content: flex-start;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu button:hover {
+  border-radius: 3px;
+  background: #2dbf78;
+  color: #07130d;
+}
+
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  padding: 2px 0 4px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 72px);
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #2a333d;
+  border-radius: 3px;
+  background: #121b24;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .35);
+}
+
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button {
+  height: 24px;
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #151d26;
+  color: #cbd5df;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu,
+.bottom-signal-dock.strategy-mode .ts-visual-condition-builder {
+  display: grid;
+  gap: 7px;
+  margin-top: 2px;
+  padding: 8px;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #101820;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor textarea {
+  min-height: 58px;
+  resize: vertical;
+  padding: 7px;
+  border: 1px solid #2a3743;
+  border-radius: 3px;
+  background: #0c131a;
+  color: #dce5ed;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor button,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu button,
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions button {
+  border: 1px solid #2b3a47;
+  border-radius: 3px;
+  background: #151d26;
+  color: #aeb9c4;
+  cursor: pointer;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor button {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-builder-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-builder-row select {
+  flex: 0 0 auto;
+  height: 24px;
+  min-width: 96px;
+  padding: 0 22px 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 3px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-builder-row select:nth-child(2),
+.bottom-signal-dock.strategy-mode .ts-condition-builder-row select:nth-child(4) {
+  min-width: 128px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions button {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu button {
+  min-height: 38px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu strong {
+  color: #dce5ed;
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu span {
+  color: #7f8b98;
+  font-size: 11px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor button:hover,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions button:hover {
+  border-color: #2dbf78;
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line a {
+  font-size: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line a::before {
+  content: "Read the docs";
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row {
+  min-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 1px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-block-shell {
+  display: grid;
+  gap: 4px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-block-shell + .ts-condition-block-shell {
+  margin-top: 9px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row .ts-condition-mode-title {
+  margin: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row button {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8f83ff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row button:hover {
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-help-line {
+  display: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-trendspider-editor-block {
+  min-height: 112px;
+  border: 1px solid #263542;
+  background: #0b1117;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar {
+  min-height: 35px;
+  padding: 0 11px;
+  border-bottom: 0;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools span {
+  min-width: 44px;
+  text-align: right;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools input {
+  flex: 0 1 88px;
+  width: 88px;
+  min-width: 52px;
+  border-color: transparent;
+  background: transparent;
+  color: #eef4f8;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools input:hover,
+.bottom-signal-dock.strategy-mode .ts-script-tools input:focus {
+  border-color: #2a3743;
+  background: #101821;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools button {
+  flex: 0 0 22px;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8f83ff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-script-more,
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-ai-mini {
+  display: inline-flex !important;
+  opacity: 1;
+  visibility: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-script-more {
+  width: 28px;
+  height: 22px;
+  border: 1px solid #59646f;
+  border-radius: 3px;
+  background: #17212c;
+  color: #f2f4ff !important;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-script-more:hover {
+  border-color: #8f83ff;
+  background: #252f44;
+  color: #ffffff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-more-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-2px);
+  text-align: center;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-more-wrap {
+  flex: 0 0 28px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-action-menu {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  z-index: 40;
+  width: 150px;
+  display: grid;
+  padding: 4px 0;
+  border: 1px solid #2a333d;
+  border-radius: 3px;
+  background: #121b24;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .42);
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-action-menu button {
+  width: 100%;
+  height: 28px;
+  justify-content: flex-start;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #cbd5df;
+  font-size: 12px;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-action-menu button:hover {
+  background: #173426;
+  color: #eafff5;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-editor-surface {
+  min-height: 62px;
+  padding: 0 11px 10px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-comment {
+  width: min(420px, 100%);
+  min-height: 44px;
+  resize: vertical;
+  padding: 6px 7px;
+  border: 1px solid #2a3743;
+  border-radius: 3px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-list {
+  padding: 0 0 3px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line {
+  width: max-content;
+  max-width: none;
+  min-height: 28px;
+  display: inline-grid;
+  grid-template-columns: max-content 20px;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 2px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  white-space: normal;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line:hover {
+  border-color: #24313d;
+  background: #0d151d;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-block-body {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line label {
+  flex: 0 0 auto;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select {
+  width: 100%;
+  min-width: 0;
+  height: 22px;
+  padding: 0 18px 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 22px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select:hover,
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select:focus {
+  border-color: #365064;
+  background: #13202a;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-timeframe-field {
+  width: 52px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-left-field,
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-right-field {
+  width: 124px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-operator-field {
+  width: 112px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-offset-field {
+  width: 78px;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-remove-button {
+  align-self: center;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  color: #667480;
+  opacity: .72;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line:hover .condition-remove-button {
+  opacity: 1;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-condition-inline {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  color: #cbd5df;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line span {
+  flex: 0 0 auto;
+  color: #cbd5df;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line select {
+  flex: 0 0 auto;
+  height: 22px;
+  padding: 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line input {
+  width: 38px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line select {
+  min-width: 82px;
+  padding-right: 18px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line select:last-child {
+  min-width: 88px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 22px;
+  padding-left: 164px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-check-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #cbd5df;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-check-row input {
+  width: 14px;
+  height: 14px;
+  accent-color: #2dbf78;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-condition-group {
+  width: max-content;
+  max-width: none;
+  margin: 2px 0;
+  border-color: #263542;
+  background: #0a1118;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select {
+  height: 22px;
+  padding: 0 18px 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls input {
+  width: 74px;
+  height: 22px;
+  padding: 0 7px;
+  border: 1px solid #2a3743;
+  border-radius: 2px;
+  background: #101821;
+  color: #dce5ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select:first-child {
+  width: 132px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select:nth-child(2) {
+  width: 92px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select:nth-child(3) {
+  width: 132px;
+}
+
+@media (max-width: 900px) {
+  .ts-strategy-widget {
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+
+  .ts-body-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-strategy-list {
+    display: none;
+  }
+
+  .ts-editor-scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-signal-dock.strategy-mode .ts-editor-scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .bottom-signal-dock.strategy-mode .ts-condition-section:nth-of-type(2) {
+    padding-left: 0;
+  }
+
+  .ts-results {
+    grid-column: auto;
+  }
+
+  .ts-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 7px 9px;
+  }
+
+  .ts-results-body {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-signal-list-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ts-signal-format-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ts-condition-line {
+    grid-template-columns: 52px minmax(100px, 1fr) minmax(90px, 1fr);
+    overflow-x: auto;
+  }
+}
+
+.alerts-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.happening-layout {
+  display: block;
+}
+
+.alert-grid,
+.happening-grid {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.scanner-header,
+.scanner-row {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 66px 58px;
+  align-items: center;
+  gap: 6px;
+}
+
+.scanner-header {
+  height: 24px;
+  padding: 0 8px;
+  color: #6f7d89;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.scanner-row,
+.alert-row,
+.happening-row {
+  width: 100%;
+  min-height: 33px;
+  margin-bottom: 6px;
+  padding: 0 8px;
+  border: 1px solid #263542;
+  border-radius: 5px;
+  background: #121b24;
+  color: #cdd7e1;
+  font-size: 12px;
+}
+
+.scanner-row {
+  border-style: solid;
+  text-align: left;
+  cursor: pointer;
+}
+
+.scanner-results-pane .scanner-header span:nth-child(3),
+.scanner-results-pane .scanner-header span:nth-child(6),
+.scanner-results-pane .scanner-row > span:nth-of-type(2),
+.scanner-results-pane .scanner-row > span:nth-of-type(4) {
+  display: none;
+}
+
+.scanner-row:hover,
+.scanner-row.active,
+.alert-row:hover,
+.happening-row:hover {
+  border-color: #2d3d4c;
+  background: #151f29;
+}
+
+.scanner-row.active {
+  border-color: #41ce83;
+  background: #13251d;
+}
+
+.scanner-row strong {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #eef4f8;
+}
+
+.scanner-row small {
+  color: #7f8b98;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.scanner-row span,
+.alert-row span,
+.happening-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scanner-row em,
+.alert-row em,
+.happening-row em {
+  color: #55d895;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.scanner-row b {
+  color: #e2a044;
+}
+
+.filter-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-card,
+.timing-card {
+  padding: 10px;
+  border: 1px solid #263542;
+  border-radius: 6px;
+  background: #141e27;
+}
+
+.filter-card span,
+.filter-card strong,
+.timing-card span,
+.timing-card strong {
+  display: block;
+}
+
+.filter-card span,
+.timing-card span {
+  color: #8d9aa7;
+  font-size: 11px;
+}
+
+.filter-card strong,
+.timing-card strong {
+  margin-top: 7px;
+  color: #dce5ed;
+  font-size: 13px;
+}
+
+.alert-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 130px 120px 92px;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-row svg {
+  color: #4ee093;
+}
+
+.automation-strip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.happening-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 10px;
+}
+
+.happening-row.good {
+  border-color: #26734f;
+}
+
+.happening-row.warn {
+  border-color: #8a6a2d;
+}
+
+.timing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timing-card p {
+  min-height: 30px;
+  margin: 7px 0 0;
+  color: #8995a2;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.timing-meter {
+  height: 7px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: #26323d;
+  overflow: hidden;
+}
+
+.timing-meter i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #e2a044, #2dbf78);
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-widget,
+.bottom-signal-dock.strategy-mode .ts-body-layout,
+.bottom-signal-dock.strategy-mode .ts-editor-scroll,
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  background: #0d1116 !important;
+  color: #cbd5df !important;
+  font-family: inherit;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  border-bottom-color: #2a333d !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+  border-right-color: #2a333d !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.bottom-signal-dock.strategy-mode .ts-condition-mode-title {
+  color: #eef4f8 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button,
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button,
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack button,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu button,
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions button,
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor button,
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button {
+  border-color: #2b3a47 !important;
+  background: #151d26 !important;
+  color: #aeb9c4 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu button.active,
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack button:hover,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu button:hover,
+.bottom-signal-dock.strategy-mode .ts-condition-builder-actions button:hover,
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor button:hover,
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button:hover {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu,
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu,
+.bottom-signal-dock.strategy-mode .ts-script-action-menu,
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu,
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor,
+.bottom-signal-dock.strategy-mode .ts-visual-condition-builder,
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu,
+.bottom-signal-dock.strategy-mode .ts-trendspider-editor-block,
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar,
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor {
+  border-color: #263542 !important;
+  background: #0b1117 !important;
+  color: #cbd5df !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools input,
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.bottom-signal-dock.strategy-mode .ts-condition-line select,
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select,
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls input,
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line select,
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor textarea,
+.bottom-signal-dock.strategy-mode .ts-script-comment,
+.bottom-signal-dock.strategy-mode .ts-signal-list-editor textarea,
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu input {
+  border-color: #2a3743 !important;
+  background: #101821 !important;
+  color: #dce5ed !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar button,
+.bottom-signal-dock.strategy-mode .ts-subject-picker-line button,
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button {
+  color: #55d895 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row button,
+.bottom-signal-dock.strategy-mode .ts-script-tools button {
+  color: #8e9aa6 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-mode-row button:hover,
+.bottom-signal-dock.strategy-mode .ts-script-tools button:hover {
+  color: #eafff5 !important;
+  background: #173426 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-script-more {
+  border-color: #2b3a47 !important;
+  background: #151d26 !important;
+  color: #dce5ed !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-tools .ts-script-more:hover {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line span,
+.bottom-signal-dock.strategy-mode .ts-exit-check-row label,
+.bottom-signal-dock.strategy-mode .ts-subject-picker-line span,
+.bottom-signal-dock.strategy-mode .ts-script-footnote,
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu span,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu span {
+  color: #8e9aa6 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu strong,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu strong {
+  color: #eef4f8 !important;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line:hover,
+.bottom-signal-dock.strategy-mode .ts-nested-condition-group {
+  border-color: #263542 !important;
+  background: #0a1118 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 38px;
+  padding: 4px 9px !important;
+  border-bottom: 1px solid #263542 !important;
+  background: #111820 !important;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-left-tools,
+.bottom-signal-dock.strategy-mode .ts-settings-actions {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-left-tools {
+  flex: 1 1 auto;
+  overflow-x: auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-actions {
+  flex: 0 0 auto;
+  margin-left: auto;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row input,
+.bottom-signal-dock.strategy-mode .ts-settings-row select,
+.bottom-signal-dock.strategy-mode .ts-settings-row button {
+  height: 24px !important;
+  border: 1px solid #2b3a47 !important;
+  border-radius: 2px !important;
+  background: #151d26 !important;
+  color: #dce5ed !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-name-input {
+  width: 200px !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-left-tools > select {
+  width: 82px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-depth-select {
+  width: 112px !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-date-range-input {
+  width: 94px !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-popover-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-popover-wrap > button {
+  min-width: 86px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row button:hover,
+.bottom-signal-dock.strategy-mode .ts-settings-row button.active {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-run-button {
+  min-width: 58px;
+  border-color: #2dbf78 !important;
+  background: #1f9f57 !important;
+  color: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-save-menu-wrap {
+  position: relative;
+  display: inline-flex;
+  overflow: visible;
+}
+
+.bottom-signal-dock.strategy-mode .ts-save-more-button {
+  width: 28px;
+  padding: 0 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-save-action-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  z-index: 50;
+  width: 138px;
+  display: grid;
+  padding: 4px 0;
+  border: 1px solid #263542;
+  border-radius: 3px;
+  background: #111820;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .42);
+}
+
+.bottom-signal-dock.strategy-mode .ts-save-action-menu button {
+  width: 100%;
+  justify-content: flex-start;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  text-align: left;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout {
+  position: relative;
+  grid-template-columns: 240px minmax(0, 1fr) !important;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-main {
+  grid-column: 2;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 38px minmax(0, 1fr);
+  background: #0d1116;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout.list-collapsed {
+  grid-template-columns: 0 minmax(0, 1fr) !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout.list-collapsed .ts-strategy-list {
+  width: 0;
+  min-width: 0;
+  transform: none;
+  pointer-events: none;
+  border-right: 0 !important;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-edge-toggle {
+  position: absolute;
+  left: 230px;
+  top: 112px;
+  z-index: 30;
+  width: 10px;
+  height: 30px;
+  border: 1px solid #263542;
+  border-right-color: #263542;
+  border-radius: 3px 0 0 3px;
+  background: #0b1117;
+  color: #8e9aa6;
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1;
+  padding: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout.list-collapsed .ts-list-edge-toggle {
+  left: 0;
+  top: 112px;
+  border-left: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list {
+  grid-column: 1;
+  position: relative;
+  width: 240px;
+  display: grid;
+  grid-template-rows: 34px 30px minmax(0, 1fr) 38px;
+  padding: 0 !important;
+  border-right: 1px solid #263542 !important;
+  background: #0b1117 !important;
+  box-shadow: none;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-search {
+  width: calc(100% - 14px);
+  height: 24px;
+  margin: 5px 7px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px 7px;
+  border-bottom: 1px solid #263542;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button {
+  height: 22px !important;
+  padding: 0 3px !important;
+  font-size: 10px !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items {
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items button {
+  min-height: 34px;
+  padding: 5px 8px;
+  border-bottom: 1px solid #17222c;
+}
+
+.bottom-signal-dock.strategy-mode .ts-new-strategy-row {
+  padding: 6px 7px;
+  border-top: 0;
+  border-bottom: 1px solid #263542;
+  background: #0f171f;
+}
+
+.bottom-signal-dock.strategy-mode .ts-new-strategy-button {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.open.strategy-mode {
+  background: #f2f2f2;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-widget {
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) !important;
+  padding: 10px !important;
+  background: #f7f7f7 !important;
+  color: #222 !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout {
+  height: 100%;
+  min-height: 0;
+  grid-template-columns: 240px minmax(0, 1fr) !important;
+  gap: 10px;
+  background: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-main {
+  grid-column: 2;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 38px minmax(0, 1fr);
+  background: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list {
+  grid-column: 1;
+  width: 240px;
+  grid-template-rows: 34px 30px minmax(0, 1fr) 38px;
+  border-right: 1px solid #bdbdbd !important;
+  background: #efefef !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-search {
+  width: calc(100% - 14px);
+  height: 24px;
+  margin: 5px 7px;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-search input {
+  color: #222;
+  font-size: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px 7px;
+  border-bottom: 1px solid #263542;
+  background: transparent;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button {
+  height: 22px !important;
+  padding: 0 3px !important;
+  border: 1px solid #2b3a47 !important;
+  border-radius: 4px !important;
+  background: #111922 !important;
+  color: #8e9aa6 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-tabs button.active,
+.bottom-signal-dock.strategy-mode .ts-list-tabs button:hover {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items {
+  gap: 0;
+  padding: 5px;
+  border-bottom: 1px solid #263542;
+  background: #0b1117;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item {
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  border: 0 !important;
+  border-radius: 4px;
+  background: transparent !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item:hover,
+.bottom-signal-dock.strategy-mode .ts-list-item.active {
+  background: #173426 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item-select {
+  min-height: 42px !important;
+  padding: 5px 7px !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #cbd5df !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items strong {
+  color: #eef4f8 !important;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-items span {
+  margin-top: 3px;
+  color: #7f8b98 !important;
+  font-size: 10px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-new-strategy-button {
+  width: 100%;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #2dbf78 !important;
+  border-radius: 4px !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+  cursor: pointer;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-edge-toggle {
+  left: 230px;
+  top: 112px;
+  width: 10px;
+  height: 30px;
+  border-color: #bdbdbd;
+  border-right-color: #bdbdbd;
+  border-radius: 3px 0 0 3px;
+  background: #fff;
+  color: #777;
+  font-size: 10px;
+  padding: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout.list-collapsed .ts-list-edge-toggle {
+  left: 0;
+  top: 112px;
+  width: 10px;
+  border-left: 0;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row {
+  min-height: 38px;
+  height: 38px;
+  padding: 7px 10px !important;
+  border-bottom: 1px dashed #cfcfcf !important;
+  background: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-left-tools,
+.bottom-signal-dock.strategy-mode .ts-settings-actions {
+  gap: 5px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-settings-row input,
+.bottom-signal-dock.strategy-mode .ts-settings-row select,
+.bottom-signal-dock.strategy-mode .ts-settings-row button {
+  height: 24px !important;
+  border: 1px solid #c9c9c9 !important;
+  border-radius: 2px !important;
+  background: #f7f7f7 !important;
+  color: #4e45c7 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-name-input {
+  width: 200px !important;
+  background: #fff !important;
+  color: #222 !important;
+  font-weight: 600 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-run-button {
+  min-width: 58px;
+  border-color: #4e45c7 !important;
+  background: #4e45c7 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-editor-scroll {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  padding: 0 10px 14px;
+  background: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 10px 0 8px;
+  border-bottom: 1px dashed #cfcfcf !important;
+  background: #fff !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+  padding-right: 12px;
+  border-right: 1px dashed #2a333d !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section:nth-of-type(2) {
+  padding-left: 12px;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.bottom-signal-dock.strategy-mode .ts-condition-mode-title {
+  color: #333 !important;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bottom-signal-dock.strategy-mode .ts-trendspider-editor-block {
+  min-height: 112px;
+  border: 1px solid #d4d4d4 !important;
+  background: #f7f7f7 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar {
+  min-height: 34px;
+  padding: 0 10px;
+  border-bottom: 0 !important;
+  background: #f7f7f7 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-script-editor-surface {
+  padding: 0 10px 10px;
+  background: #f7f7f7;
+}
+
+.bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select,
+.bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.bottom-signal-dock.strategy-mode .ts-script-tools input,
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.bottom-signal-dock.strategy-mode .ts-exit-rule-line select,
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls select,
+.bottom-signal-dock.strategy-mode .ts-nested-group-controls input {
+  border-color: #bfc1ca !important;
+  background: #fff !important;
+  color: #222 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-add-condition-button,
+.bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button {
+  border-color: #bfc1ca !important;
+  background: #fff !important;
+  color: #4e45c7 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-condition-type-menu,
+.bottom-signal-dock.strategy-mode .ts-add-parameter-menu,
+.bottom-signal-dock.strategy-mode .ts-subject-picker-menu,
+.bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid,
+.bottom-signal-dock.strategy-mode .ts-template-condition-menu,
+.bottom-signal-dock.strategy-mode .ts-human-condition-editor,
+.bottom-signal-dock.strategy-mode .ts-visual-condition-builder {
+  border-color: #d3d3d3 !important;
+  background: #f2f2f2 !important;
+  color: #222 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-results {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  border: 1px solid #d4d4d4 !important;
+  background: #f7f7f7 !important;
+}
+
+.theme-night .bottom-signal-dock.open.strategy-mode {
+  background: #0d1116 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-widget,
+.theme-night .bottom-signal-dock.strategy-mode .ts-body-layout,
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-main,
+.theme-night .bottom-signal-dock.strategy-mode .ts-editor-scroll,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section {
+  background: #0d1116 !important;
+  color: #cbd5df !important;
+  font-family: inherit !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-list {
+  border-right-color: #263542 !important;
+  background: #0b1117 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items,
+.theme-night .bottom-signal-dock.strategy-mode .ts-trendspider-editor-block,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-logic-bar,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-editor-surface,
+.theme-night .bottom-signal-dock.strategy-mode .ts-results {
+  border-color: #263542 !important;
+  background: #0b1117 !important;
+  color: #cbd5df !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row {
+  border-bottom-color: #263542 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+  border-color: #2a333d !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-condition-button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-edge-toggle {
+  border-color: #2b3a47 !important;
+  background: #151d26 !important;
+  color: #aeb9c4 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button:hover,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button:hover,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-condition-button:hover,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-condition-button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button:hover {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-run-button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-new-strategy-button {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-search,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row input,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row select,
+.theme-night .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-tools input,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-rule-line select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-nested-group-controls select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-nested-group-controls input {
+  border-color: #2a3743 !important;
+  background: #101821 !important;
+  color: #dce5ed !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-search input {
+  color: #dce5ed !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items button {
+  border-bottom-color: #17222c !important;
+  background: transparent !important;
+  color: #cbd5df !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items button:hover {
+  background: #13251d !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items strong,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-mode-title {
+  color: #eef4f8 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items span {
+  color: #4ee093 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-type-menu,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-parameter-menu,
+.theme-night .bottom-signal-dock.strategy-mode .ts-subject-picker-menu,
+.theme-night .bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid,
+.theme-night .bottom-signal-dock.strategy-mode .ts-template-condition-menu,
+.theme-night .bottom-signal-dock.strategy-mode .ts-human-condition-editor,
+.theme-night .bottom-signal-dock.strategy-mode .ts-visual-condition-builder {
+  border-color: #263542 !important;
+  background: #111820 !important;
+  color: #cbd5df !important;
+}
+
+@media (max-width: 900px) {
+  .dock-action-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 7px 10px;
+  }
+
+  .dock-config-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .market-scanner-workspace,
+  .timing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scanner-library-pane {
+    display: none;
+  }
+
+  .scanner-builder-header {
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 7px 9px;
+  }
+
+  .scanner-builder-header div,
+  .scanner-settings-strip {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .scanner-builder-pane {
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+  }
+
+}
+
+@media (max-width: 760px) {
+  .dock-filters {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .scanner-header,
+  .scanner-row {
+    grid-template-columns: 78px minmax(150px, 1fr) 58px 44px;
+  }
+
+  .scanner-condition-block {
+    width: max-content;
+    grid-template-columns: max-content 24px;
+    overflow-x: auto;
+  }
+
+  .dock-config-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.theme-day .bottom-signal-dock {
+  border-top-color: #cfd7df;
+  background: #f4f6f8;
+}
+
+.theme-day .dock-resize-handle,
+.theme-day .dock-tabs-bar,
+.theme-day .dock-panel-header,
+.theme-day .dock-action-bar {
+  border-color: #cfd7df;
+  background: #ffffff;
+}
+
+.theme-day .dock-tabs-bar button,
+.theme-day .dock-panel-header em,
+.theme-day .dock-action-bar button,
+.theme-day .dock-action-bar span {
+  color: #50606f;
+}
+
+.theme-day .dock-tabs-bar button:hover,
+.theme-day .dock-tabs-bar .active,
+.theme-day .dock-action-bar button:hover,
+.theme-day .dock-action-bar button.active {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .dock-panel-header strong {
+  color: #1f2933;
+}
+
+.theme-day .scanner-library-pane,
+.theme-day .scanner-builder-pane,
+.theme-day .scanner-results-pane,
+.theme-day .filter-card,
+.theme-day .timing-card {
+  border-color: #d8e0e7;
+  background: #ffffff;
+}
+
+.theme-day .scanner-library-top,
+.theme-day .scanner-builder-header,
+.theme-day .scanner-settings-strip,
+.theme-day .scanner-results-title,
+.theme-day .condition-group-title {
+  border-color: #d8e0e7;
+  background: #ffffff;
+}
+
+.theme-day .scanner-row,
+.theme-day .alert-row,
+.theme-day .happening-row,
+.theme-day .scanner-condition-block,
+.theme-day .scanner-nested-group,
+.theme-day .scanner-results-pane .scanner-row {
+  border-color: #d8e0e7;
+  background: #f7f9fb;
+  color: #2d3742;
+}
+
+.theme-day .scanner-row:hover,
+.theme-day .scanner-row.active,
+.theme-day .alert-row:hover,
+.theme-day .happening-row:hover {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+}
+
+.theme-day .scanner-row strong,
+.theme-day .filter-card strong,
+.theme-day .timing-card strong {
+  color: #1f2933;
+}
+
+.theme-day .scanner-row small,
+.theme-day .scanner-header,
+.theme-day .filter-card span,
+.theme-day .timing-card span,
+.theme-day .timing-card p {
+  color: #667789;
+}
+
+.theme-day .scanner-library-top strong,
+.theme-day .scanner-builder-header strong,
+.theme-day .scanner-results-title strong,
+.theme-day .condition-group-title strong,
+.theme-day .scanner-condition-block strong,
+.theme-day .scanner-results-pane strong {
+  color: #1f2933;
+}
+
+.theme-day .scanner-library-search,
+.theme-day .scanner-settings-strip button,
+.theme-day .scanner-settings-strip select,
+.theme-day .scanner-builder-header button,
+.theme-day .condition-group-title button,
+.theme-day .scanner-condition-block select,
+.theme-day .scanner-condition-block input,
+.theme-day .scanner-nested-group select,
+.theme-day .scanner-nested-group input,
+.theme-day .scanner-results-actions button,
+.theme-day .dock-config-panel button,
+.theme-day .dock-config-panel select,
+.theme-day .dock-config-panel input {
+  border-color: #cfd7df;
+  background: #ffffff;
+  color: #2d3742;
+}
+
+.theme-day .scanner-library-search input,
+.theme-day .scanner-condition-block input,
+.theme-day .scanner-nested-group input,
+.theme-day .dock-config-panel input {
+  color: #1f2933;
+}
+
+.theme-day .scanner-library-search svg,
+.theme-day .scanner-condition-block span,
+.theme-day .scanner-condition-block label,
+.theme-day .scanner-nested-group span,
+.theme-day .scanner-results-pane span,
+.theme-day .scanner-results-pane small,
+.theme-day .dock-config-panel span {
+  color: #667789;
+}
+
+.theme-day .scanner-settings-strip button:hover,
+.theme-day .scanner-settings-strip button.active,
+.theme-day .scanner-builder-header button:hover,
+.theme-day .condition-group-title button:hover,
+.theme-day .scanner-results-actions button:hover,
+.theme-day .dock-config-panel button:hover,
+.theme-day .dock-config-panel button.active {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .scanner-library-list button,
+.theme-day .scanner-template-card,
+.theme-day .scanner-watchlist-card,
+.theme-day .scanner-result-row,
+.theme-day .scanner-results-list button {
+  border-color: #d8e0e7;
+  background: #f7f9fb;
+  color: #2d3742;
+}
+
+.theme-day .scanner-library-list button:hover,
+.theme-day .scanner-library-list button.active,
+.theme-day .scanner-template-card:hover,
+.theme-day .scanner-watchlist-card:hover,
+.theme-day .scanner-result-row:hover,
+.theme-day .scanner-results-list button:hover {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-tabs button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row input,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-tools input,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.theme-day .bottom-signal-dock.strategy-mode .ts-exit-rule-line select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-nested-group-controls select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-nested-group-controls input {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-type-menu button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-parameter-menu button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-template-condition-menu button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-human-condition-editor button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-builder-actions button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-type-menu button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-parameter-menu button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-template-condition-menu button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-human-condition-editor button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-builder-actions button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid button:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-widget,
+.theme-night .bottom-signal-dock.strategy-mode .ts-body-layout,
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-main,
+.theme-night .bottom-signal-dock.strategy-mode .ts-editor-scroll,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section {
+  background: #0d1116 !important;
+  color: #cbd5df !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row {
+  border-bottom: 1px solid #263542 !important;
+  background: #111820 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-list {
+  border-right-color: #263542 !important;
+  background: #0b1117 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-search {
+  border-color: #263542;
+  background: #101821;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-search input {
+  color: #dce5ed;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row input,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-logic-bar select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-tools input,
+.theme-night .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-rule-line input,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-rule-line select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-nested-group-controls select,
+.theme-night .bottom-signal-dock.strategy-mode .ts-nested-group-controls input {
+  border-color: #2a3743 !important;
+  background: #101821 !important;
+  color: #dce5ed !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-tabs button:hover,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button:hover,
+.theme-night .bottom-signal-dock.strategy-mode .ts-settings-row button.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-condition-button:hover {
+  border-color: #2dbf78 !important;
+  background: #173426 !important;
+  color: #eafff5 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-name-input {
+  background: #101821 !important;
+  color: #dce5ed !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items button,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-editor-surface,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-logic-bar,
+.theme-night .bottom-signal-dock.strategy-mode .ts-trendspider-editor-block,
+.theme-night .bottom-signal-dock.strategy-mode .ts-results {
+  border-color: #263542 !important;
+  background: #0b1117 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items strong,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-mode-title,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-parameter-menu strong,
+.theme-night .bottom-signal-dock.strategy-mode .ts-template-condition-menu strong {
+  color: #eef4f8 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-items span,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-rule-line span,
+.theme-night .bottom-signal-dock.strategy-mode .ts-exit-check-row label,
+.theme-night .bottom-signal-dock.strategy-mode .ts-script-footnote,
+.theme-night .bottom-signal-dock.strategy-mode .ts-add-parameter-menu span,
+.theme-night .bottom-signal-dock.strategy-mode .ts-template-condition-menu span {
+  color: #8e9aa6 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-condition-section:first-of-type {
+  border-right-color: #2a333d !important;
+}
+
+.theme-day .bottom-signal-dock :is(input, select, textarea) {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock :is(input, textarea)::placeholder {
+  color: #8a98a7 !important;
+}
+
+.theme-day .bottom-signal-dock :is(button, .scanner-template-card, .scanner-watchlist-card, .filter-card, .timing-card) {
+  border-color: #d8e0e7;
+}
+
+.theme-day .bottom-signal-dock :is([class*="menu"], [class*="popover"], [class*="dropdown"]) {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+}
+
+.theme-day .scanner-action-menu {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  box-shadow: 0 14px 34px rgba(25, 38, 52, .14) !important;
+}
+
+.theme-day .scanner-action-menu button {
+  background: transparent !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .scanner-action-menu button:hover {
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .scanner-action-menu button:disabled {
+  color: #8a98a7 !important;
+}
+
+.theme-day .bottom-signal-dock :is(button:hover, button.active) {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .market-scanner-workspace,
+.theme-day .scanner-condition-builder,
+.theme-day .new-scanner-start {
+  background: #f4f6f8;
+  color: #1f2933;
+}
+
+.theme-day .scanner-library-tabs,
+.theme-day .scanner-new-row,
+.theme-day .scanner-script-card,
+.theme-day .scanner-script-header,
+.theme-day .scanner-group-head,
+.theme-day .scanner-condition-stack,
+.theme-day .scanner-add-parameter,
+.theme-day .scanner-ai-builder,
+.theme-day .scanner-results-list {
+  border-color: #d8e0e7;
+  background: #ffffff;
+  color: #1f2933;
+}
+
+.theme-day .scanner-library-tabs button,
+.theme-day .scanner-list-edge-toggle,
+.theme-day .scanner-library-item,
+.theme-day .scanner-library-select,
+.theme-day .new-scanner-options button,
+.theme-day .scanner-ai-builder textarea,
+.theme-day .scanner-ai-builder button,
+.theme-day .scanner-script-logic select,
+.theme-day .scanner-script-controls select,
+.theme-day .scanner-script-controls input,
+.theme-day .scanner-script-controls button,
+.theme-day .scanner-add-parameter > button,
+.theme-day .scanner-add-menu button,
+.theme-day .scanner-comment-row input {
+  border-color: #cfd7df;
+  background: #ffffff;
+  color: #2d3742;
+}
+
+.theme-day .scanner-library-item:hover,
+.theme-day .scanner-library-item.active,
+.theme-day .scanner-library-tabs button.active,
+.theme-day .scanner-library-tabs button:hover,
+.theme-day .new-scanner-options button:hover,
+.theme-day .scanner-script-controls button:hover,
+.theme-day .scanner-script-controls button.active,
+.theme-day .scanner-add-parameter > button:hover,
+.theme-day .scanner-add-menu button:hover {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .new-scanner-title strong,
+.theme-day .new-scanner-options strong,
+.theme-day .scanner-script-logic strong,
+.theme-day .scanner-results-title strong,
+.theme-day .scanner-result-symbol strong,
+.theme-day .scanner-result-price strong {
+  color: #1f2933;
+}
+
+.theme-day .new-scanner-title span,
+.theme-day .new-scanner-options span,
+.theme-day .scanner-settings-kicker,
+.theme-day .scanner-settings-strip label,
+.theme-day .scanner-settings-strip label > span:first-child,
+.theme-day .scanner-script-logic small,
+.theme-day .scanner-rule-label,
+.theme-day .scanner-script-controls label,
+.theme-day .scanner-script-controls label > span,
+.theme-day .scanner-script-controls em,
+.theme-day .scanner-empty-conditions,
+.theme-day .scanner-add-parameter span,
+.theme-day .scanner-result-symbol small,
+.theme-day .scanner-result-price em {
+  color: #667789;
+}
+
+.theme-day .scanner-empty-conditions {
+  border-color: #d8e0e7;
+  background: #f7f9fb;
+}
+
+.theme-day .scanner-add-menu {
+  border-color: #cfd7df;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(25, 38, 52, .14);
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-strategy-widget,
+.theme-day .bottom-signal-dock.strategy-mode .ts-body-layout,
+.theme-day .bottom-signal-dock.strategy-mode .ts-strategy-main,
+.theme-day .bottom-signal-dock.strategy-mode .ts-editor-scroll,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-section,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results {
+  background: #f4f6f8 !important;
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row,
+.theme-day .bottom-signal-dock.strategy-mode .ts-strategy-list,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-tabs,
+.theme-day .bottom-signal-dock.strategy-mode .ts-trendspider-editor-block,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-logic-bar,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-editor-surface,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-body,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signal-list-editor,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-parameter {
+  border-color: #d8e0e7 !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-items,
+.theme-day .bottom-signal-dock.strategy-mode .ts-metrics-strip div,
+.theme-day .bottom-signal-dock.strategy-mode .ts-pbe-grid div,
+.theme-day .bottom-signal-dock.strategy-mode .ts-tabular-data,
+.theme-day .bottom-signal-dock.strategy-mode .ts-positions-table button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signals-head,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signal-format-grid span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-empty-result {
+  border-color: #d8e0e7 !important;
+  background: #f7f9fb !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-item.active,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-item:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-tabs button.active,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-tabs button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button.active,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-trade-filter button.active,
+.theme-day .bottom-signal-dock.strategy-mode .ts-trade-filter button:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-edge-toggle,
+.theme-day .bottom-signal-dock.strategy-mode .ts-save-more-button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-save-action-menu button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-logic-bar button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-tools button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-subject-picker-line button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-mode-row button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signal-list-actions button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-trade-filter button {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-row button.active,
+.theme-day .bottom-signal-dock.strategy-mode .ts-save-action-menu button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-logic-bar button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-tools button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-subject-picker-line button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-mode-row button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signal-list-actions button:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-run-button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-new-strategy-button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-condition-button {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-section-title,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-mode-title,
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-items strong,
+.theme-day .bottom-signal-dock.strategy-mode .ts-signals-head strong,
+.theme-day .bottom-signal-dock.strategy-mode .ts-metrics-strip strong,
+.theme-day .bottom-signal-dock.strategy-mode .ts-pbe-grid strong,
+.theme-day .bottom-signal-dock.strategy-mode .ts-positions-table strong {
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-items span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-editor-help-line,
+.theme-day .bottom-signal-dock.strategy-mode .ts-exit-rule-line span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-exit-check-row label,
+.theme-day .bottom-signal-dock.strategy-mode .ts-inline-check,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-footnote,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-metrics-strip span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-pbe-grid span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-pbe-grid em,
+.theme-day .bottom-signal-dock.strategy-mode .ts-tabular-row em,
+.theme-day .bottom-signal-dock.strategy-mode .ts-empty-result {
+  color: #667789 !important;
+}
+
+.theme-day .scanner-condition-block:hover,
+.theme-day .scanner-nested-group,
+.theme-day .scanner-nested-group-header,
+.theme-day .scanner-nested-group-body,
+.theme-day .condition-block-body select,
+.theme-day .condition-block-body input,
+.theme-day .nested-add-condition,
+.theme-day .condition-remove-button,
+.theme-day .scanner-results-pane,
+.theme-day .scanner-results-title,
+.theme-day .scanner-ai-builder label,
+.theme-day .scanner-ai-builder div {
+  border-color: #d8e0e7 !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .condition-block-body label,
+.theme-day .condition-threshold-field em,
+.theme-day .condition-threshold-field b,
+.theme-day .scanner-results-title small,
+.theme-day .scanner-result-row,
+.theme-day .scanner-result-symbol small,
+.theme-day .scanner-result-price em,
+.theme-day .condition-block-body input::placeholder {
+  color: #667789 !important;
+}
+
+.theme-day .condition-block-body select:hover,
+.theme-day .condition-block-body input:hover,
+.theme-day .condition-block-body select:focus,
+.theme-day .condition-block-body input:focus,
+.theme-day .nested-add-condition:hover,
+.theme-day .scanner-result-row:hover,
+.theme-day .scanner-result-row.active {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .condition-remove-button:hover {
+  border-color: #f2a4aa !important;
+  background: #fff1f3 !important;
+  color: #b42335 !important;
+}
+
+.theme-day .strategy-chart-labels {
+  color: #667789 !important;
+}
+
+.theme-day .strategy-performance-chart {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(125, 143, 158, .16) 24px),
+    repeating-linear-gradient(90deg, transparent 0 55px, rgba(125, 143, 158, .12) 56px),
+    #ffffff !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-popover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-save-action-menu,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-action-menu,
+.theme-day .bottom-signal-dock.strategy-mode .ts-subject-picker-menu,
+.theme-day .bottom-signal-dock.strategy-mode .ts-timeframe-picker-grid,
+.theme-day .bottom-signal-dock.strategy-mode .ts-template-condition-menu,
+.theme-day .bottom-signal-dock.strategy-mode .ts-human-condition-editor,
+.theme-day .bottom-signal-dock.strategy-mode .ts-visual-condition-builder,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-type-menu,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-parameter-menu {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+  box-shadow: 0 14px 34px rgba(25, 38, 52, .14) !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-card,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-card-head,
+.theme-day .bottom-signal-dock.strategy-mode .ts-logic-row,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-list,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-block-shell {
+  border-color: #d8e0e7 !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-logic-row select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-popover input,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-popover select,
+.theme-day .bottom-signal-dock.strategy-mode .ts-subject-picker-menu input,
+.theme-day .bottom-signal-dock.strategy-mode .ts-human-condition-editor textarea,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-card-head input {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #1f2933 !important;
+  box-shadow: none !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-logic-row strong {
+  color: #1f2933 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-logic-row span,
+.theme-day .bottom-signal-dock.strategy-mode .ts-settings-popover label {
+  color: #667789 !important;
+}
+
+.theme-day .scanner-new-row {
+  border-bottom-color: #d8e0e7 !important;
+  background: #ffffff !important;
+}
+
+.theme-day .scanner-new-row button {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: inset 0 0 0 1px rgba(45, 191, 120, .08);
+}
+
+.theme-day .scanner-new-row button:hover {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-new-strategy-row {
+  border-bottom-color: #d8e0e7 !important;
+  background: #ffffff !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-new-strategy-button {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: inset 0 0 0 1px rgba(45, 191, 120, .08);
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-new-strategy-button:hover {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .new-scanner-start {
+  background:
+    linear-gradient(135deg, rgba(45, 191, 120, .08), transparent 46%),
+    #ffffff !important;
+}
+
+.theme-day .new-scanner-options button {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+  box-shadow: 0 10px 28px rgba(25, 38, 52, .08);
+}
+
+.theme-day .new-scanner-options button:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .scanner-settings-strip .scanner-toggle {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #50606f !important;
+}
+
+.theme-day .scanner-settings-strip .scanner-toggle:hover {
+  border-color: #2dbf78 !important;
+  background: #f7fbf9 !important;
+  color: #198754 !important;
+}
+
+.theme-day .scanner-settings-strip .scanner-toggle:has(input:checked) {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: inset 0 0 0 1px rgba(45, 191, 120, .08);
+}
+
+.theme-day .scanner-settings-strip .scanner-toggle input {
+  accent-color: #198754;
+}
+
+.theme-day .scanner-settings-strip .scanner-toggle span {
+  color: inherit !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack {
+  background: transparent !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button {
+  min-height: 24px !important;
+  height: 24px !important;
+  padding: 0 9px !important;
+  border: 1px solid #2dbf78 !important;
+  border-radius: 3px !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-script-choice-stack.compact button:hover {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-condition-wrap {
+  background: transparent !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-condition-button {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: none !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-condition-button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-add-condition-button.active {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-mode-row button {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: #8a98a7 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-mode-row button:hover {
+  border-color: #f2a4aa !important;
+  background: #fff1f3 !important;
+  color: #b42335 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line button,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line select,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line button,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body button,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body select,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body input {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+  box-shadow: none !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line button:nth-child(3),
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line button:nth-child(5),
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line select:nth-child(4),
+.theme-day .bottom-signal-dock.strategy-mode .condition-offset-field select {
+  color: #50606f !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line select:hover,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line select:hover,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body select:hover,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body input:hover,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body select:focus,
+.theme-day .bottom-signal-dock.strategy-mode .condition-block-body input:focus {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line .ts-condition-remove,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-remove-button {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: #8a98a7 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-condition-line .ts-condition-remove:hover,
+.theme-day .bottom-signal-dock.strategy-mode .scanner-condition-block.ts-condition-line .condition-remove-button:hover {
+  border-color: #f2a4aa !important;
+  background: #fff1f3 !important;
+  color: #b42335 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+  box-shadow: none !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button:hover,
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button.active {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-results-tabs button:disabled {
+  border-color: #cfd7df !important;
+  background: #f7f9fb !important;
+  color: #8a98a7 !important;
+}
+
+.theme-day .dock-filters button,
+.theme-day .automation-strip button,
+.theme-day .dock-panel-header button {
+  border-color: #cfd7df !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+  box-shadow: none !important;
+}
+
+.theme-day .dock-filters button:hover,
+.theme-day .dock-filters button.active,
+.theme-day .automation-strip button:hover,
+.theme-day .automation-strip button.active,
+.theme-day .dock-panel-header button:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .dock-filters .primary,
+.theme-day .automation-strip button:first-child {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+  color: #198754 !important;
+}
+
+.theme-day .dock-filters .primary:hover,
+.theme-day .automation-strip button:first-child:hover {
+  border-color: #229963 !important;
+  background: #dff2e8 !important;
+  color: #16734a !important;
+}
+
+.theme-day .alerts-layout,
+.theme-day .happening-layout,
+.theme-day .timing-grid {
+  color: #1f2933;
+}
+
+.theme-day .alert-row,
+.theme-day .happening-row,
+.theme-day .timing-card {
+  border-color: #d8e0e7 !important;
+  background: #ffffff !important;
+  color: #2d3742 !important;
+}
+
+.theme-day .alert-row:hover,
+.theme-day .happening-row:hover {
+  border-color: #2dbf78 !important;
+  background: #e8f7ef !important;
+}
+
+.theme-day .alert-row svg {
+  color: #198754 !important;
+}
+
+.theme-day .alert-row span,
+.theme-day .happening-row span,
+.theme-day .timing-card span,
+.theme-day .timing-card p {
+  color: #667789 !important;
+}
+
+.theme-day .alert-row strong,
+.theme-day .happening-row strong,
+.theme-day .timing-card strong {
+  color: #1f2933 !important;
+}
+
+.theme-day .timing-meter {
+  background: #e2e8ef !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item {
+  min-height: 43px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item.active,
+.bottom-signal-dock.strategy-mode .ts-list-item:hover {
+  background: #e7f2ea !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-list-item-select {
+  min-width: 0;
+  min-height: 42px !important;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  padding: 5px 2px !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #222 !important;
+  text-align: left;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-item {
+  border-bottom-color: #17222c;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-item.active,
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-item:hover {
+  background: #13251d !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-list-item-select {
+  color: #cbd5df !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-item {
+  border-bottom-color: #d8e0e7;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-list-item-select {
+  background: transparent !important;
+  color: #2d3742 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-body-layout {
+  background: transparent !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list,
+.bottom-signal-dock.strategy-mode .ts-strategy-main {
+  overflow: hidden;
+  border: 1px solid #263542 !important;
+  border-radius: 5px;
+  background: #101820 !important;
+}
+
+.bottom-signal-dock.strategy-mode .ts-strategy-list {
+  border-right: 1px solid #263542 !important;
+}
+
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-list,
+.theme-night .bottom-signal-dock.strategy-mode .ts-strategy-main {
+  border-color: #263542 !important;
+  background: #101820 !important;
+}
+
+.theme-day .bottom-signal-dock.strategy-mode .ts-strategy-list,
+.theme-day .bottom-signal-dock.strategy-mode .ts-strategy-main {
+  border-color: #d8e0e7 !important;
+  background: #ffffff !important;
+}

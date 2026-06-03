@@ -1,0 +1,467 @@
+.tool-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  background: #0c1218;
+  border-right: 1px solid #263442;
+  overflow: visible;
+}
+
+.tool-rail-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1c2834;
+}
+
+.tool-rail-group:last-child {
+  border-bottom: 0;
+}
+
+.tool-rail-group.destructive {
+  padding-top: 10px;
+}
+
+.tool-button {
+  width: 34px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: #8d9aa7;
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.tool-button:hover,
+.tool-button.active {
+  border-color: #24523c;
+  background: #12291f;
+  color: #4ee093;
+}
+
+.tool-button:disabled {
+  cursor: not-allowed;
+  opacity: .42;
+}
+
+.tool-button svg {
+  font-size: 16px;
+}
+
+.tool-menu {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.tool-menu::after {
+  content: '';
+  position: absolute;
+  left: 34px;
+  top: -8px;
+  width: 14px;
+  height: 46px;
+}
+
+.tool-menu-trigger {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 10px;
+  height: 10px;
+  display: grid;
+  place-items: end;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #8d9aa7;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tool-menu-corner {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-bottom: 5px solid currentColor;
+  opacity: .76;
+}
+
+.tool-menu:hover .tool-menu-trigger,
+.tool-menu:focus-within .tool-menu-trigger {
+  color: #4ee093;
+}
+
+.tool-popout {
+  position: absolute;
+  left: 40px;
+  top: -8px;
+  z-index: 20;
+  min-width: 214px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px;
+  border: 1px solid #2f4050;
+  border-radius: 4px;
+  background: #101820;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .35);
+}
+
+.tool-menu:hover .tool-popout,
+.tool-menu:focus-within .tool-popout {
+  display: flex;
+}
+
+.tool-popout-title {
+  padding: 4px 7px 6px;
+  border-bottom: 1px solid #20303e;
+  color: #8d9aa7;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.tool-popout-item {
+  min-height: 32px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #d1d8df;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 8px;
+  text-align: left;
+}
+
+.tool-popout-item:hover,
+.tool-popout-item.active {
+  background: #182633;
+  color: #4ee093;
+}
+
+.tool-popout-item svg {
+  font-size: 15px;
+}
+
+.tool-glyph {
+  display: block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.tool-glyph::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.tool-glyph.trend::before,
+.tool-glyph.extended::before,
+.tool-glyph.channel::before,
+.tool-glyph.segment::before,
+.tool-glyph.arrow::before {
+  left: 0;
+  right: 0;
+  top: 8px;
+  transform: rotate(-34deg);
+  transform-origin: center;
+}
+
+.tool-glyph.trend::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: .38;
+  transform: rotate(-34deg);
+}
+
+.tool-glyph.extended::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: rotate(-34deg);
+}
+
+.tool-glyph.channel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 10px 0 currentColor;
+  transform: rotate(-34deg);
+}
+
+.theme-day .tool-rail {
+  border-right-color: #cfd7df;
+  background: #ffffff;
+}
+
+.theme-day .tool-rail-group {
+  border-bottom-color: #d8e0e7;
+}
+
+.theme-day .tool-button,
+.theme-day .tool-menu-trigger {
+  color: #667789;
+}
+
+.theme-day .tool-button:hover,
+.theme-day .tool-button.active,
+.theme-day .tool-menu:hover .tool-menu-trigger,
+.theme-day .tool-menu:focus-within .tool-menu-trigger {
+  border-color: #2dbf78;
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.theme-day .tool-popout {
+  border-color: #cfd7df;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(25, 38, 52, .16);
+}
+
+.theme-day .tool-popout-title {
+  border-bottom-color: #d8e0e7;
+  color: #667789;
+}
+
+.theme-day .tool-popout-item {
+  color: #2d3742;
+}
+
+.theme-day .tool-popout-item:hover,
+.theme-day .tool-popout-item.active {
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.tool-glyph.pitchfork::before {
+  left: 7px;
+  right: auto;
+  top: 1px;
+  width: 2px;
+  height: 14px;
+  background: currentColor;
+  transform: rotate(-25deg);
+}
+
+.tool-glyph.pitchfork::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-25deg);
+}
+
+.tool-glyph.segment::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 12px -8px 0 currentColor;
+  left: 0;
+  top: 10px;
+}
+
+.tool-glyph.arrow::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  right: 1px;
+  top: 3px;
+  transform: rotate(11deg);
+}
+
+.tool-glyph.ellipse::before {
+  inset: 3px 1px;
+  width: auto;
+  height: auto;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.tool-glyph.fibonacci::before {
+  left: 1px;
+  right: 1px;
+  top: 3px;
+  height: 2px;
+  background: currentColor;
+  box-shadow:
+    0 4px 0 currentColor,
+    0 8px 0 currentColor,
+    0 12px 0 currentColor;
+}
+
+.tool-glyph.fib-extension::before {
+  left: 1px;
+  right: 1px;
+  top: 2px;
+  height: 2px;
+  background: currentColor;
+  box-shadow:
+    0 3px 0 currentColor,
+    0 7px 0 currentColor,
+    0 12px 0 currentColor;
+}
+
+.tool-glyph.fib-extension::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 1px;
+  top: 13px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(-28deg);
+  transform-origin: left center;
+}
+
+.tool-glyph.fib-time-zones::before {
+  top: 1px;
+  bottom: 1px;
+  left: 2px;
+  right: auto;
+  width: 2px;
+  height: auto;
+  background: currentColor;
+  box-shadow:
+    4px 0 0 currentColor,
+    9px 0 0 currentColor,
+    14px 0 0 currentColor;
+}
+
+.tool-glyph.fib-time-zones::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: currentColor;
+  opacity: .52;
+}
+
+.tool-glyph.fibonacci::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 2px;
+  height: 14px;
+  background: currentColor;
+  opacity: .58;
+}
+
+.tool-glyph.price-range::before {
+  left: 7px;
+  right: auto;
+  top: 2px;
+  width: 2px;
+  height: 12px;
+  background: currentColor;
+  box-shadow:
+    -4px 0 0 rgba(255, 255, 255, .18),
+    4px 0 0 rgba(255, 255, 255, .18);
+}
+
+.tool-glyph.price-range::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 2px;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 12px 0 currentColor;
+}
+
+.tool-glyph.date-range::before {
+  left: 2px;
+  right: 2px;
+  top: 7px;
+  height: 2px;
+  background: currentColor;
+}
+
+.tool-glyph.date-range::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 2px;
+  width: 2px;
+  background: currentColor;
+  box-shadow: 12px 0 0 currentColor;
+}
+
+.tool-glyph.callout::before {
+  left: 2px;
+  right: 3px;
+  top: 3px;
+  height: 8px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.tool-glyph.callout::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  bottom: 1px;
+  width: 7px;
+  height: 7px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: skew(-20deg);
+}
+
+.tool-glyph.vertical::before {
+  inset: 1px auto 1px 7px;
+  width: 2px;
+  height: auto;
+}
